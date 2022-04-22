@@ -3,9 +3,13 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Password_Manager"
-        mc:Ignorable="d"
+        xmlns:local="clr-namespace:Password_Manager" 
+        xmlns:viewmodels="clr-namespace:Password_Manager.ViewModel"
+        mc:Ignorable="d" Closing="Window_Closing"
         Title="MainWindow" Height="720" Width="1280">
+    <Window.DataContext>
+        <viewmodels:MainViewModel/>
+    </Window.DataContext>
     <Grid>
         <Grid>
             <Grid VerticalAlignment="Top" Height="75" Margin="200,0,0,0" Background="Aqua">
@@ -14,10 +18,19 @@
             
             <Grid HorizontalAlignment="Left" Width="200" Background="Aquamarine">
                 <Label Content="Tools:" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,20,0,0" FontSize="24"/>
+                <Grid Margin="0,75,0,0" Background="Bisque">
+                    <Button Command="{Binding AddAccountCommand}" Content="Add Account" VerticalAlignment="Top" Height="65" Margin="5" FontSize="16"/>
+                    <Button Command="{Binding EditAccountCommand}" Content="Edit Account" VerticalAlignment="Top" Height="65" Margin="5,75,5,0" FontSize="16"/>
+                    <Button Command="{Binding DeleteAccountCommand}" Content="Delete Account" VerticalAlignment="Top" Height="65" Margin="5,146,5,0" FontSize="16"/>
+                </Grid>
             </Grid>
             
-            <Grid Margin="200,75,0,0" Background="Beige">
-                
+            <Grid Margin="200,75,0,0" >
+                <ListBox FontSize="16" Background="Beige" 
+                         ItemsSource="{Binding Accounts, UpdateSourceTrigger=PropertyChanged}" 
+                         SelectedIndex="{Binding SelectedIndex, UpdateSourceTrigger=PropertyChanged}"
+                         HorizontalAlignment="Stretch"
+                         HorizontalContentAlignment="Stretch"/>
             </Grid>
         </Grid>
     </Grid>

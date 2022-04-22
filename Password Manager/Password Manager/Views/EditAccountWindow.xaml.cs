@@ -10,25 +10,36 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Password_Manager
+namespace Password_Manager.Views
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для EditAccountWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class EditAccountWindow : Window
     {
-        public MainWindow()
+        public EditAccountWindow()
         {
             InitializeComponent();
+        }
+
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter) 
+            {
+                this.Hide();
+            }
+            if (e.Key == Key.Escape) 
+            {
+                this.Hide();
+            }
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             e.Cancel = true;
-            Environment.Exit(0);
+            this.Hide();
         }
     }
 }
