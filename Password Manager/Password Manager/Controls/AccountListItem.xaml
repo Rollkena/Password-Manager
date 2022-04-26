@@ -9,8 +9,7 @@
     <Grid>
         <Label Content="{Binding AccountName}" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,5,0,0"/>
         <Label Content="{Binding EmailAddress}"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,30,0,0"/>
-        <Button Uid="3" Click = "ButtonsClicked" Content="   View&#xD;&#xA;Contents" Width="80" Height="50" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,5,10,0"/>
-        <Button Uid="2" Click = "ButtonsClicked" Content="   Copy&#xD;&#xA;Password" Width="80" Height="50" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,5,95,0"/>
-        <Button Uid="1" Click = "ButtonsClicked" Content="Copy&#xA;Email" Width="80" Height="50" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,5,180,0"/>
+        <Button Uid="2" Click = "ButtonsClicked" Content="   Copy&#xD;&#xA;Password" Width="80" Height="50" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,5,10,0"/>
+        <Button Uid="1" Click = "ButtonsClicked" Content="Copy&#xA;Email" Width="80" Height="50" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,5,100,0"/>
     </Grid>
 </UserControl>

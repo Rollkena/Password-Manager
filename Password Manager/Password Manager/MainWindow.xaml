@@ -15,7 +15,7 @@
             <Grid VerticalAlignment="Top" Height="75" Margin="200,0,0,0" Background="Aqua">
                 <Label Content="Accounts list:" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="24"/>
             </Grid>
-            
+
             <Grid HorizontalAlignment="Left" Width="200" Background="Aquamarine">
                 <Label Content="Tools:" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,20,0,0" FontSize="24"/>
                 <Grid Margin="0,75,0,0" Background="Bisque">
@@ -28,7 +28,7 @@
                     <Separator VerticalAlignment="Center" Margin="0,469,0,145.4"/>
                 </Grid>
             </Grid>
-            
+
             <Grid Margin="200,75,0,0" >
                 <ListBox FontSize="16" Background="Beige" 
                          ItemsSource="{Binding Accounts, UpdateSourceTrigger=PropertyChanged}" 

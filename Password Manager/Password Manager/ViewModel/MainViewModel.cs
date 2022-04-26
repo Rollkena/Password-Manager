@@ -25,6 +25,8 @@ namespace Password_Manager.ViewModel
         }
         //динамическая коллекция для аккаунтов
 
+        public string ErrorMessege;
+
         private int _selectedIndex;
         public int SelectedIndex 
         {
@@ -68,6 +70,7 @@ namespace Password_Manager.ViewModel
         public AddAccountWindow NewAccountWindow { get; set; }
         public EditAccountWindow EditAccountWindow { get; set; }
         public AccountContentViewer AccountViewer { get; set; }
+
 
 
 
@@ -154,10 +157,6 @@ namespace Password_Manager.ViewModel
             if (SelectedIndex > -1) 
             {
                 Accounts.RemoveAt(SelectedIndex); 
-            }
-            else
-            {
-                
             }
         }
     }
