@@ -37,20 +37,21 @@ namespace Password_Manager.Views
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.Enter) 
+            if (e.Key == Key.Enter)
             {
                 AddAccountCallback?.Invoke();
-                this.Hide();
+                this.Close();
             }
-            if (e.Key == Key.Escape) 
+            if (e.Key == Key.Escape)
             {
-                this.Hide();
+                this.Close();
             }
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             e.Cancel = true;
+            this.DataContext = new AccountStructure();
             this.Hide();
         }
     }

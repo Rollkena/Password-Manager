@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Password_Manager" 
         xmlns:viewmodels="clr-namespace:Password_Manager.ViewModel"
         mc:Ignorable="d" Closing="Window_Closing"
-        Title="MainWindow" Height="720" Width="1280">
+        Title="MainWindow" Height="731.4" Width="1280">
     <Window.DataContext>
         <viewmodels:MainViewModel/>
     </Window.DataContext>
@@ -22,6 +22,10 @@
                     <Button Command="{Binding AddAccountCommand}" Content="Add Account" VerticalAlignment="Top" Height="65" Margin="5" FontSize="16"/>
                     <Button Command="{Binding EditAccountCommand}" Content="Edit Account" VerticalAlignment="Top" Height="65" Margin="5,75,5,0" FontSize="16"/>
                     <Button Command="{Binding DeleteAccountCommand}" Content="Delete Account" VerticalAlignment="Top" Height="65" Margin="5,146,5,0" FontSize="16"/>
+                    <Button Command="{Binding ShowAccountInfoCommand}" Content="Show Account Info" VerticalAlignment="Top" Height="65" Margin="5,216,5,0" FontSize="16"/>
+                    <Button Command="{Binding SaveAccountsCommand}" Content="Save Accounts" VerticalAlignment="Top" Height="65" Margin="5,545,5,0" FontSize="16"/>
+                    <Button Command="{Binding LoadAccountsCommand}" Content="Load Accounts" VerticalAlignment="Top" Height="65" Margin="5,475,5,0" FontSize="16"/>
+                    <Separator VerticalAlignment="Center" Margin="0,469,0,145.4"/>
                 </Grid>
             </Grid>
             
@@ -30,7 +34,7 @@
                          ItemsSource="{Binding Accounts, UpdateSourceTrigger=PropertyChanged}" 
                          SelectedIndex="{Binding SelectedIndex, UpdateSourceTrigger=PropertyChanged}"
                          HorizontalAlignment="Stretch"
-                         HorizontalContentAlignment="Stretch"/>
+                         HorizontalContentAlignment="Stretch" ScrollViewer.VerticalScrollBarVisibility="Visible"/>
             </Grid>
         </Grid>
     </Grid>

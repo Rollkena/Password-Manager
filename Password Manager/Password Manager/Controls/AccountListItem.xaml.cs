@@ -40,7 +40,7 @@ namespace Password_Manager.Controls
             {
                 case 1: if (!AccountNull) Clipboard.SetText(AccountContext.EmailAddress); break; //email
                 case 2: if (!AccountNull) Clipboard.SetText(AccountContext.Password); break; //password
-                case 3: break; //view
+                case 3: ShowContentWindowCallback?.Invoke(); break; //view
             }
         }
         //обработчик событий
