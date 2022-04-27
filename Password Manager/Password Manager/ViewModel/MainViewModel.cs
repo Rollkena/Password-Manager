@@ -38,6 +38,21 @@ namespace Password_Manager.ViewModel
         public bool AccountIsSelected { get => SelectedIndex > -1; }
 
 
+        private string _searchText;
+        public string SearchText 
+        {
+            get => _searchText; set
+            {
+                _searchText = value; RaisePropertyChanged();
+            }
+        }
+
+
+
+
+
+
+
         public AccountListItem SelectedAccountItem 
         {
             get 
@@ -72,8 +87,6 @@ namespace Password_Manager.ViewModel
         public AccountContentViewer AccountViewer { get; set; }
 
 
-
-
         public ICommand AddAccountCommand { get; set; }
         public ICommand EditAccountCommand { get; set; }
         public ICommand DeleteAccountCommand { get; set; }
@@ -81,6 +94,7 @@ namespace Password_Manager.ViewModel
 
         public ICommand SaveAccountsCommand { get; set; }
         public ICommand LoadAccountsCommand { get; set; }
+        public ICommand SearchForAccountsCommand { get; set; }
 
 
 
@@ -93,6 +107,7 @@ namespace Password_Manager.ViewModel
 
             SaveAccountsCommand = new Command(SaveAccounts);
             LoadAccountsCommand = new Command(LoadAccounts);
+            SearchForAccountsCommand = new Command(SearchForAccounts);
 
 
             NewAccountWindow = new AddAccountWindow();
@@ -116,9 +131,58 @@ namespace Password_Manager.ViewModel
         }
         private void LoadAccounts()
         {
+            Accounts.Clear();
             foreach (AccountStructure it in AccountDatabase.AccountLoadet.LoadFiles())
             {
                 AddAccount(it);
+            }
+        }
+        private void SearchForAccounts()
+        {
+            Accounts.Clear();
+            foreach (AccountStructure accStr in AccountDatabase.AccountLoadet.LoadFiles())
+            {
+                if (accStr.AccountName.ToLower().Contains(SearchText)){AddAccount(accStr);}
+            }
+            foreach (AccountStructure accStr in AccountDatabase.AccountLoadet.LoadFiles())
+            {
+                if (accStr.EmailAddress.ToLower().Contains(SearchText)) { AddAccount(accStr); }
+            }
+            foreach (AccountStructure accStr in AccountDatabase.AccountLoadet.LoadFiles())
+            {
+                if (accStr.Username.ToLower().Contains(SearchText)) { AddAccount(accStr); }
+            }
+            foreach (AccountStructure accStr in AccountDatabase.AccountLoadet.LoadFiles())
+            {
+                if (accStr.Password.ToLower().Contains(SearchText)) { AddAccount(accStr); }
+            }
+            foreach (AccountStructure accStr in AccountDatabase.AccountLoadet.LoadFiles())
+            {
+                if (accStr.DateOfBirth.ToLower().Contains(SearchText)) { AddAccount(accStr); }
+            }
+            foreach (AccountStructure accStr in AccountDatabase.AccountLoadet.LoadFiles())
+            {
+                if (accStr.SecurityInfo.ToLower().Contains(SearchText)) { AddAccount(accStr); }
+            }
+            foreach (AccountStructure accStr in AccountDatabase.AccountLoadet.LoadFiles())
+            {
+                if (accStr.ExtraInfo1.ToLower().Contains(SearchText)) { AddAccount(accStr); }
+            }
+            foreach (AccountStructure accStr in AccountDatabase.AccountLoadet.LoadFiles())
+            {
+                if (accStr.ExtraInfo2.ToLower().Contains(SearchText)) { AddAccount(accStr); }
+            }
+            foreach (AccountStructure accStr in AccountDatabase.AccountLoadet.LoadFiles())
+            {
+                if (accStr.ExtraInfo3.ToLower().Contains(SearchText)) { AddAccount(accStr); }
+            }
+            foreach (AccountStructure accStr in AccountDatabase.AccountLoadet.LoadFiles())
+            {
+                if (accStr.ExtraInfo4.ToLower().Contains(SearchText)) { AddAccount(accStr); }
+            }
+            foreach (AccountStructure accStr in AccountDatabase.AccountLoadet.LoadFiles())
+            {
+                if (accStr.ExtraInfo5.ToLower().Contains(SearchText)) { AddAccount(accStr); }
             }
         }
 
@@ -159,5 +223,8 @@ namespace Password_Manager.ViewModel
                 Accounts.RemoveAt(SelectedIndex); 
             }
         }
+
+
+        
     }
 }
