@@ -5,10 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Password_Manager.Views"
         mc:Ignorable="d"
-        Title="AccountContentViewer" Height="565" Width="800" KeyDown="Window_KeyDown" Closing ="Window_Closing">
+        Title="AccountContentViewer" Height="561.4" Width="803.2" KeyDown="Window_KeyDown" Closing ="Window_Closing">
     <Grid>
         <Grid VerticalAlignment="Top" Height="80">
-            <Label Content="Account Info" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="36"/>
+            <Label Content="Account Info" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="36" Margin="10,12,570.6,10"/>
+            <Button  Content="Go Back" HorizontalAlignment="Left" Margin="662,10,0,0" VerticalAlignment="Top" Width="125" Height="57" FontSize="16" Click="Button_Click"  />
         </Grid>
         <Grid Margin="0,80,0,0">
             <Grid HorizontalAlignment="Left" Width="150">

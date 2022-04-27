@@ -8,7 +8,8 @@
         Title="AddAccountWindow" Height="565" Width="800">
     <Grid>
         <Grid VerticalAlignment="Top" Height="80">
-            <Label Content="Add a New Account" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="36"/>
+            <Button  Content="Add Account" HorizontalAlignment="Left" Margin="662,10,0,0" VerticalAlignment="Top" Width="125" Height="57" FontSize="16" Click="Button_Click"  />
+            <Label Content="Add a New Account" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="36" Margin="10,12,457.6,10"/>
         </Grid>
         <Grid Margin="0,80,0,0">
             <Grid HorizontalAlignment="Left" Width="150">

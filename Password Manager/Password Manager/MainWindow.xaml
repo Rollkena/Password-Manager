@@ -23,7 +23,8 @@
                     <Button Command="{Binding EditAccountCommand}" Content="Edit Account" VerticalAlignment="Top" Height="50" Margin="5,60,5,0" FontSize="16"/>
                     <Button Command="{Binding DeleteAccountCommand}" Content="Delete Account" VerticalAlignment="Top" Height="50" Margin="5,115,5,0" FontSize="16"/>
                     <Button Command="{Binding ShowAccountInfoCommand}" Content="Show Account Info" VerticalAlignment="Top" Height="50" Margin="5,170,5,0" FontSize="16"/>
-                    <Button Command="{Binding SaveAccountsCommand}" Content="Save Accounts" VerticalAlignment="Top" Height="50" Margin="5,560,5,0" FontSize="16"/>
+                    <Button Command="{Binding SaveAccountsCommand}" Content="Are you sure?" VerticalAlignment="Top" Height="50" Margin="5,560,5,0" FontSize="16" Click="Button_Click_1"/>
+                    <Button x:Name="Button2" Content="Save Accounts" VerticalAlignment="Top" Height="50" Margin="5,560,5,0" FontSize="16" Click="Button_Click"/>
                     <Button Command="{Binding LoadAccountsCommand}" Content="Load Accounts" VerticalAlignment="Top" Height="50" Margin="5,505,5,0" FontSize="16"/>
                     <Separator VerticalAlignment="Center" Margin="0,482,0,116.6" Height="28" RenderTransformOrigin="0.5,0.5">
                         <Separator.RenderTransform>
@@ -38,6 +39,8 @@
                     <TextBox HorizontalAlignment="Left" Height="30" Margin="5,280,0,0" TextWrapping="Wrap" Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="190" FontSize="16"/>
                     <Button Command ="{Binding SearchForAccountsCommand}" Content="Go!" HorizontalAlignment="Left" Margin="5,315,0,0" VerticalAlignment="Top" Width="90" Height="30" FontSize="16"/>
                     <Button Command="{Binding LoadAccountsCommand}" Content="Reset" HorizontalAlignment="Left" Margin="105,315,0,0" VerticalAlignment="Top" Width="90" Height="30" FontSize="16"/>
+                    <Button Command="{Binding SaveResultCommand}" Content="Save Result" HorizontalAlignment="Left" Margin="5,360,0,0" VerticalAlignment="Top" Width="190" Height="30" FontSize="16" Click="Button_Click_2"/>
+                    
                     <Separator VerticalAlignment="Center" Margin="0,215,0,383.6" Height="28" RenderTransformOrigin="0.5,0.5">
                         <Separator.RenderTransform>
                             <TransformGroup>
@@ -49,7 +52,7 @@
                         </Separator.RenderTransform>
                     </Separator>
                     <Label Content="Search:" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,233,0,0" FontSize="24" Width="85"/>
-                    <Separator VerticalAlignment="Center" Margin="0,345,0,253.6" Height="28" RenderTransformOrigin="0.5,0.5">
+                    <Separator VerticalAlignment="Center" Margin="0,340,0,258.6" Height="28" RenderTransformOrigin="0.5,0.5">
                         <Separator.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform ScaleY="-1"/>

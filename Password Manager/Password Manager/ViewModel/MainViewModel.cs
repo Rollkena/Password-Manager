@@ -8,12 +8,19 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using System.Windows.Input;
 
 namespace Password_Manager.ViewModel
 {
     public class MainViewModel : BaseViewModel
-    { 
+    {
+
+        public static string RootFolder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+        public static string CentralFolderPath = RootFolder + @"\PasswordManager DataBase";
+        public static string SearchFolderPath = RootFolder + @"\PasswordManager Search";
+
+
         private ObservableCollection<AccountListItem> _Items = new ObservableCollection<AccountListItem>();
         public ObservableCollection<AccountListItem> Accounts 
         {
@@ -95,6 +102,7 @@ namespace Password_Manager.ViewModel
         public ICommand SaveAccountsCommand { get; set; }
         public ICommand LoadAccountsCommand { get; set; }
         public ICommand SearchForAccountsCommand { get; set; }
+        public ICommand SaveResultCommand { get; set; }
 
 
 
@@ -108,15 +116,35 @@ namespace Password_Manager.ViewModel
             SaveAccountsCommand = new Command(SaveAccounts);
             LoadAccountsCommand = new Command(LoadAccounts);
             SearchForAccountsCommand = new Command(SearchForAccounts);
+            SaveResultCommand = new Command(SaveResult);
 
 
             NewAccountWindow = new AddAccountWindow();
             EditAccountWindow = new EditAccountWindow();
             AccountViewer = new AccountContentViewer();
 
-            //AccountDatabase.CreateDirThinghs();
+            AccountDatabase.CreateDirThinghs();
+            AccountDatabase.CreateDirThinghs2();
 
             NewAccountWindow.AddAccountCallback = this.AddAccount;
+        }
+
+        public string saveSearch;
+        private void SaveResult()
+        {
+            FolderBrowserDialog fbd = new FolderBrowserDialog();
+            fbd.SelectedPath = SearchFolderPath;
+            if (fbd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                saveSearch = fbd.SelectedPath;
+            }
+            List<AccountStructure> accs = new List<AccountStructure>();
+            foreach (AccountListItem acc in Accounts)
+            {
+                AccountStructure accStr = acc.DataContext as AccountStructure;
+                accs.Add(accStr);
+            }
+            AccountDatabase.AccountSaver.SaveFiles(accs, saveSearch);
         }
 
         private void SaveAccounts()
@@ -127,7 +155,7 @@ namespace Password_Manager.ViewModel
                 AccountStructure accStr = acc.DataContext as AccountStructure;
                 accs.Add(accStr);
             }
-            AccountDatabase.AccountSaver.SaveFiles(accs);
+            AccountDatabase.AccountSaver.SaveFiles(accs, CentralFolderPath);
         }
         private void LoadAccounts()
         {
@@ -181,7 +209,7 @@ namespace Password_Manager.ViewModel
             AccountListItem all = new AccountListItem();
             all.DataContext = acc;
             all.ShowContentWindowCallback = ShowAccountContentWindow;
-
+            
             Accounts.Add(all);
         }
         private void ShowAddAccountWindow() { NewAccountWindow.Show(); }

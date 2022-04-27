@@ -14,6 +14,7 @@ namespace Password_Manager.AccountStuff
         //public static string CentralFolderPatch = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
         public static string RootFolder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
         public static string CentralFolderPath = RootFolder + @"\PasswordManager DataBase";
+        public static string SearchFolderPath = RootFolder + @"\PasswordManager Search";
 
         //public static string CentralFolderPatch = @"D:\PasswordManager";
 
@@ -32,7 +33,7 @@ namespace Password_Manager.AccountStuff
 
         public static class AccountSaver
         {
-            public static void SaveFiles(List<AccountStructure> accounts) { SaveFiles(accounts, CentralFolderPath); }
+            //public static void SaveFiles(List<AccountStructure> accounts) { SaveFiles(accounts, CentralFolderPath); }
             public static void SaveFiles(List<AccountStructure> accounts, string directory) 
             {
                 List<string> NewAccName     = new List<string>();
@@ -126,17 +127,108 @@ namespace Password_Manager.AccountStuff
             {
                 Directory.CreateDirectory(CentralFolderPath);
             }
-            File.Create(Path.Combine(CentralFolderPath, AccNameName));
-            File.Create(Path.Combine(CentralFolderPath, EmailName));
-            File.Create(Path.Combine(CentralFolderPath, UsernameName));
-            File.Create(Path.Combine(CentralFolderPath, PasswordName));
-            File.Create(Path.Combine(CentralFolderPath, DateOfbirthName));
-            File.Create(Path.Combine(CentralFolderPath, SecurityName));
-            File.Create(Path.Combine(CentralFolderPath, ExtraIn1Name));
-            File.Create(Path.Combine(CentralFolderPath, ExtraIn2Name));
-            File.Create(Path.Combine(CentralFolderPath, ExtraIn3Name));
-            File.Create(Path.Combine(CentralFolderPath, ExtraIn4Name));
-            File.Create(Path.Combine(CentralFolderPath, ExtraIn5Name));
+
+
+            if(!File.Exists((Path.Combine(CentralFolderPath, AccNameName))))
+            {
+                File.Create(Path.Combine(CentralFolderPath, AccNameName));
+            }
+            if (!File.Exists((Path.Combine(CentralFolderPath, EmailName))))
+            {
+                File.Create(Path.Combine(CentralFolderPath, EmailName));
+            }
+            if (!File.Exists((Path.Combine(CentralFolderPath, UsernameName))))
+            {
+                File.Create(Path.Combine(CentralFolderPath, UsernameName));
+            }
+            if (!File.Exists((Path.Combine(CentralFolderPath, PasswordName))))
+            {
+                File.Create(Path.Combine(CentralFolderPath, PasswordName));
+            }
+            if (!File.Exists((Path.Combine(CentralFolderPath, DateOfbirthName))))
+            {
+                File.Create(Path.Combine(CentralFolderPath, DateOfbirthName));
+            }
+            if (!File.Exists((Path.Combine(CentralFolderPath, SecurityName))))
+            {
+                File.Create(Path.Combine(CentralFolderPath, SecurityName));
+            }
+
+            if (!File.Exists((Path.Combine(CentralFolderPath, ExtraIn1Name))))
+            {
+                File.Create(Path.Combine(CentralFolderPath, ExtraIn1Name));
+            }
+            if (!File.Exists((Path.Combine(CentralFolderPath, ExtraIn2Name))))
+            {
+                File.Create(Path.Combine(CentralFolderPath, ExtraIn2Name));
+            }
+            if (!File.Exists((Path.Combine(CentralFolderPath, ExtraIn3Name))))
+            {
+                File.Create(Path.Combine(CentralFolderPath, ExtraIn3Name));
+            }
+            if (!File.Exists((Path.Combine(CentralFolderPath, ExtraIn4Name))))
+            {
+                File.Create(Path.Combine(CentralFolderPath, ExtraIn4Name));
+            }
+            if (!File.Exists((Path.Combine(CentralFolderPath, ExtraIn5Name))))
+            {
+                File.Create(Path.Combine(CentralFolderPath, ExtraIn5Name));
+            }
+        }
+
+        public static void CreateDirThinghs2()
+        {
+            if (!Directory.Exists(SearchFolderPath))
+            {
+                Directory.CreateDirectory(SearchFolderPath);
+            }
+
+
+            if (!File.Exists((Path.Combine(SearchFolderPath, AccNameName))))
+            {
+                File.Create(Path.Combine(SearchFolderPath, AccNameName));
+            }
+            if (!File.Exists((Path.Combine(SearchFolderPath, EmailName))))
+            {
+                File.Create(Path.Combine(SearchFolderPath, EmailName));
+            }
+            if (!File.Exists((Path.Combine(SearchFolderPath, UsernameName))))
+            {
+                File.Create(Path.Combine(SearchFolderPath, UsernameName));
+            }
+            if (!File.Exists((Path.Combine(SearchFolderPath, PasswordName))))
+            {
+                File.Create(Path.Combine(SearchFolderPath, PasswordName));
+            }
+            if (!File.Exists((Path.Combine(SearchFolderPath, DateOfbirthName))))
+            {
+                File.Create(Path.Combine(SearchFolderPath, DateOfbirthName));
+            }
+            if (!File.Exists((Path.Combine(SearchFolderPath, SecurityName))))
+            {
+                File.Create(Path.Combine(SearchFolderPath, SecurityName));
+            }
+
+            if (!File.Exists((Path.Combine(SearchFolderPath, ExtraIn1Name))))
+            {
+                File.Create(Path.Combine(SearchFolderPath, ExtraIn1Name));
+            }
+            if (!File.Exists((Path.Combine(SearchFolderPath, ExtraIn2Name))))
+            {
+                File.Create(Path.Combine(SearchFolderPath, ExtraIn2Name));
+            }
+            if (!File.Exists((Path.Combine(SearchFolderPath, ExtraIn3Name))))
+            {
+                File.Create(Path.Combine(SearchFolderPath, ExtraIn3Name));
+            }
+            if (!File.Exists((Path.Combine(SearchFolderPath, ExtraIn4Name))))
+            {
+                File.Create(Path.Combine(SearchFolderPath, ExtraIn4Name));
+            }
+            if (!File.Exists((Path.Combine(SearchFolderPath, ExtraIn5Name))))
+            {
+                File.Create(Path.Combine(SearchFolderPath, ExtraIn5Name));
+            }
         }
     }
 }

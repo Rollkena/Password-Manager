@@ -74,5 +74,11 @@ namespace Password_Manager.Views
             this.DataContext = null;
             this.Hide();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.DataContext = null;
+            this.Hide();
+        }
     }
 }
