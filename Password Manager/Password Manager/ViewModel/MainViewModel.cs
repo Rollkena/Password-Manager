@@ -137,52 +137,26 @@ namespace Password_Manager.ViewModel
                 AddAccount(it);
             }
         }
+
         private void SearchForAccounts()
         {
             Accounts.Clear();
-            foreach (AccountStructure accStr in AccountDatabase.AccountLoadet.LoadFiles())
+            if (SearchText != null)
             {
-                if (accStr.AccountName.ToLower().Contains(SearchText)){AddAccount(accStr);}
-            }
-            foreach (AccountStructure accStr in AccountDatabase.AccountLoadet.LoadFiles())
-            {
-                if (accStr.EmailAddress.ToLower().Contains(SearchText)) { AddAccount(accStr); }
-            }
-            foreach (AccountStructure accStr in AccountDatabase.AccountLoadet.LoadFiles())
-            {
-                if (accStr.Username.ToLower().Contains(SearchText)) { AddAccount(accStr); }
-            }
-            foreach (AccountStructure accStr in AccountDatabase.AccountLoadet.LoadFiles())
-            {
-                if (accStr.Password.ToLower().Contains(SearchText)) { AddAccount(accStr); }
-            }
-            foreach (AccountStructure accStr in AccountDatabase.AccountLoadet.LoadFiles())
-            {
-                if (accStr.DateOfBirth.ToLower().Contains(SearchText)) { AddAccount(accStr); }
-            }
-            foreach (AccountStructure accStr in AccountDatabase.AccountLoadet.LoadFiles())
-            {
-                if (accStr.SecurityInfo.ToLower().Contains(SearchText)) { AddAccount(accStr); }
-            }
-            foreach (AccountStructure accStr in AccountDatabase.AccountLoadet.LoadFiles())
-            {
-                if (accStr.ExtraInfo1.ToLower().Contains(SearchText)) { AddAccount(accStr); }
-            }
-            foreach (AccountStructure accStr in AccountDatabase.AccountLoadet.LoadFiles())
-            {
-                if (accStr.ExtraInfo2.ToLower().Contains(SearchText)) { AddAccount(accStr); }
-            }
-            foreach (AccountStructure accStr in AccountDatabase.AccountLoadet.LoadFiles())
-            {
-                if (accStr.ExtraInfo3.ToLower().Contains(SearchText)) { AddAccount(accStr); }
-            }
-            foreach (AccountStructure accStr in AccountDatabase.AccountLoadet.LoadFiles())
-            {
-                if (accStr.ExtraInfo4.ToLower().Contains(SearchText)) { AddAccount(accStr); }
-            }
-            foreach (AccountStructure accStr in AccountDatabase.AccountLoadet.LoadFiles())
-            {
-                if (accStr.ExtraInfo5.ToLower().Contains(SearchText)) { AddAccount(accStr); }
+                foreach (AccountStructure accStr in AccountDatabase.AccountLoadet.LoadFiles())
+                {
+                    if (accStr.AccountName.ToLower().Contains(SearchText)) { AddAccount(accStr); }
+                    else if (accStr.EmailAddress.ToLower().Contains(SearchText)) { AddAccount(accStr); }
+                    else if (accStr.Username.ToLower().Contains(SearchText)) { AddAccount(accStr); }
+                    else if (accStr.Password.ToLower().Contains(SearchText)) { AddAccount(accStr); }
+                    else if (accStr.DateOfBirth.ToLower().Contains(SearchText)) { AddAccount(accStr); }
+                    else if (accStr.SecurityInfo.ToLower().Contains(SearchText)) { AddAccount(accStr); }
+                    else if (accStr.ExtraInfo1.ToLower().Contains(SearchText)) { AddAccount(accStr); }
+                    else if (accStr.ExtraInfo2.ToLower().Contains(SearchText)) { AddAccount(accStr); }
+                    else if (accStr.ExtraInfo3.ToLower().Contains(SearchText)) { AddAccount(accStr); }
+                    else if (accStr.ExtraInfo4.ToLower().Contains(SearchText)) { AddAccount(accStr); }
+                    else if (accStr.ExtraInfo5.ToLower().Contains(SearchText)) { AddAccount(accStr); }
+                }
             }
         }
 
