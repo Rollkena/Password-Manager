@@ -27,6 +27,7 @@ namespace Password_Manager.Views
         {
             InitializeComponent();
             DataContext = new AccountStructure();
+            ComboBox.SelectedItem = ComboBox.FindName("No Group");
         }
 
         public void Reset()
@@ -57,8 +58,8 @@ namespace Password_Manager.Views
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            this.DataContext = new AccountStructure();
-            this.Hide();
+            AddAccountCallback?.Invoke();
+            this.Close();
         }
     }
 }

@@ -44,7 +44,7 @@ namespace Password_Manager.Views
                         case 8: Clipboard.SetText(AccountContext.ExtraInfo2); break;
                         case 9: Clipboard.SetText(AccountContext.ExtraInfo3); break;
                         case 10: Clipboard.SetText(AccountContext.ExtraInfo4); break;
-                        case 11: Clipboard.SetText(AccountContext.ExtraInfo5); break;
+                        //case 11: Clipboard.SetText(AccountContext.Group); break;
                     }
                 }
                 catch

@@ -28,7 +28,7 @@ namespace Password_Manager.AccountStuff
         public static string ExtraIn2Name    = "ExtraInfo2.txt";
         public static string ExtraIn3Name    = "ExtraInfo3.txt";
         public static string ExtraIn4Name    = "ExtraInfo4.txt";
-        public static string ExtraIn5Name    = "ExtraInfo5.txt";
+        public static string GroupName    = "Group.txt";
 
 
         public static class AccountSaver
@@ -46,7 +46,7 @@ namespace Password_Manager.AccountStuff
                 List<string> NewExtraInfo2  = new List<string>();
                 List<string> NewExtraInfo3  = new List<string>();
                 List<string> NewExtraInfo4  = new List<string>();
-                List<string> NewExtraInfo5  = new List<string>();
+                List<string> NewGroup  = new List<string>();
 
                 for (int i = 0; i < accounts.Count; i++)
                 {
@@ -60,7 +60,7 @@ namespace Password_Manager.AccountStuff
                      NewExtraInfo2.Add(accounts[i].ExtraInfo2);
                      NewExtraInfo3.Add(accounts[i].ExtraInfo3);
                      NewExtraInfo4.Add(accounts[i].ExtraInfo4);
-                     NewExtraInfo5.Add(accounts[i].ExtraInfo5);
+                     NewGroup.Add(accounts[i].Group);
                 }
                 File.WriteAllLines(Path.Combine(directory, AccNameName), NewAccName);
                 File.WriteAllLines(Path.Combine(directory, EmailName), NewEmail);
@@ -72,7 +72,7 @@ namespace Password_Manager.AccountStuff
                 File.WriteAllLines(Path.Combine(directory, ExtraIn2Name), NewExtraInfo2);
                 File.WriteAllLines(Path.Combine(directory, ExtraIn3Name), NewExtraInfo3);
                 File.WriteAllLines(Path.Combine(directory, ExtraIn4Name), NewExtraInfo4);
-                File.WriteAllLines(Path.Combine(directory, ExtraIn5Name), NewExtraInfo5);
+                File.WriteAllLines(Path.Combine(directory, GroupName), NewGroup);
             }
 
         }
@@ -92,7 +92,7 @@ namespace Password_Manager.AccountStuff
                 List<string> Extrnf2   = File.ReadAllLines(Path.Combine(directory, ExtraIn2Name   )).ToList();
                 List<string> Extrnf3   = File.ReadAllLines(Path.Combine(directory, ExtraIn3Name   )).ToList();
                 List<string> Extrnf4   = File.ReadAllLines(Path.Combine(directory, ExtraIn4Name   )).ToList();
-                List<string> Extrnf5   = File.ReadAllLines(Path.Combine(directory, ExtraIn5Name   )).ToList();
+                List<string> Grp   = File.ReadAllLines(Path.Combine(directory, GroupName)).ToList();
 
                 List<AccountStructure> accounts = new List<AccountStructure>();
 
@@ -110,7 +110,7 @@ namespace Password_Manager.AccountStuff
                         ExtraInfo2 = Extrnf2[i],
                         ExtraInfo3 = Extrnf3[i],
                         ExtraInfo4 = Extrnf4[i],
-                        ExtraInfo5 = Extrnf5[i]
+                        Group = Grp[i]
                     };
                     accounts.Add(am);
                 }
@@ -170,9 +170,9 @@ namespace Password_Manager.AccountStuff
             {
                 File.Create(Path.Combine(CentralFolderPath, ExtraIn4Name));
             }
-            if (!File.Exists((Path.Combine(CentralFolderPath, ExtraIn5Name))))
+            if (!File.Exists((Path.Combine(CentralFolderPath, GroupName))))
             {
-                File.Create(Path.Combine(CentralFolderPath, ExtraIn5Name));
+                File.Create(Path.Combine(CentralFolderPath, GroupName));
             }
         }
 
@@ -225,9 +225,9 @@ namespace Password_Manager.AccountStuff
             {
                 File.Create(Path.Combine(SearchFolderPath, ExtraIn4Name));
             }
-            if (!File.Exists((Path.Combine(SearchFolderPath, ExtraIn5Name))))
+            if (!File.Exists((Path.Combine(SearchFolderPath, GroupName))))
             {
-                File.Create(Path.Combine(SearchFolderPath, ExtraIn5Name));
+                File.Create(Path.Combine(SearchFolderPath, GroupName));
             }
         }
     }

@@ -52,7 +52,7 @@
                         </Separator.RenderTransform>
                     </Separator>
                     <Label Content="Search:" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,233,0,0" FontSize="24" Width="85"/>
-                    <Separator VerticalAlignment="Center" Margin="0,340,0,258.6" Height="28" RenderTransformOrigin="0.5,0.5">
+                    <Separator VerticalAlignment="Center" Margin="0,387,0,211.6" Height="28" RenderTransformOrigin="0.5,0.5">
                         <Separator.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform ScaleY="-1"/>

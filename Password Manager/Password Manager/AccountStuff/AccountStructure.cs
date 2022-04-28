@@ -21,7 +21,7 @@ namespace Password_Manager.AccountStuff
         public string ExtraInfo2 { get; set; }
         public string ExtraInfo3 { get; set; }
         public string ExtraInfo4 { get; set; }
-        public string ExtraInfo5 { get; set; }
+        public string Group { get; set; }
 
     }
     //структура данных аккаутна

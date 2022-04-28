@@ -183,7 +183,7 @@ namespace Password_Manager.ViewModel
                     else if (accStr.ExtraInfo2.ToLower().Contains(SearchText)) { AddAccount(accStr); }
                     else if (accStr.ExtraInfo3.ToLower().Contains(SearchText)) { AddAccount(accStr); }
                     else if (accStr.ExtraInfo4.ToLower().Contains(SearchText)) { AddAccount(accStr); }
-                    else if (accStr.ExtraInfo5.ToLower().Contains(SearchText)) { AddAccount(accStr); }
+                    //else if (accStr.ExtraInfo5.ToLower().Contains(SearchText)) { AddAccount(accStr); }
                 }
             }
         }

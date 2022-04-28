@@ -48,5 +48,11 @@ namespace Password_Manager.Views
             this.DataContext = null;
             this.Hide();
         }
+
+        //private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        //{
+        //    Binding binding = new Binding;
+        //    binding.ElementName
+        //}
     }
 }
