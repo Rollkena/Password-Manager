@@ -5,15 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Password_Manager.Views"
         mc:Ignorable="d"
-        Title="EditAccountWindow" Height="525" Width="800" KeyDown="Window_KeyDown" Closing ="Window_Closing">
+        Title="EditAccountWindow" Height="525" Width="800" KeyDown="Window_KeyDown" Closing ="Window_Closing" ResizeMode="NoResize">
     <Grid>
         <Grid VerticalAlignment="Top" Height="80">
             <Button  Content="Save Changes" HorizontalAlignment="Left" Margin="650,12,0,0" VerticalAlignment="Top" Width="125" Height="57" FontSize="16" Click="Button_Click"  />
             <Label Content="Edit an Account" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="36" Margin="10,12,498.6,10" Width="285"/>
             <ComboBox x:Name="ComboBox" HorizontalAlignment="Left" Margin="520,42,0,0" VerticalAlignment="Top" Width="115" Height="28" FontSize="16" IsReadOnly="True"  SelectedIndex="{Binding Group, UpdateSourceTrigger=PropertyChanged}">
                 <TextBlock>Favorites</TextBlock>
-                <TextBlock>Needless</TextBlock>
                 <TextBlock>Important</TextBlock>
+                <TextBlock>Needless</TextBlock>
+                <TextBlock>No Group</TextBlock>
             </ComboBox>
             <Label Content="Choose Group:" HorizontalAlignment="Left" Margin="520,10,0,0" VerticalAlignment="Top" Height="32" Width="115" FontSize="16"/>
         </Grid>
@@ -25,7 +26,7 @@
                 <Label Content="Password" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,121,0,0" FontSize="16" />
                 <Label Content="Date of birth" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,158,0,0" FontSize="16" />
                 <Label Content="Security Info" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,195,0,0" FontSize="16" />
-                <Separator HorizontalAlignment="Center" Margin="0,229,0,213" Width="150"/>
+                <Separator HorizontalAlignment="Center" Margin="0,222,0,156.2" Width="150"/>
                 <Label Content="Extra Info 1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,259,0,0" FontSize="16" />
                 <Label Content="Extra Info 2" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,296,0,0" FontSize="16" />
                 <Label Content="Extra Info 3" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,333,0,0" FontSize="16" />
@@ -38,7 +39,7 @@
                 <TextBox Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="30" Margin="10,121,0,0" VerticalAlignment="Top" Width="623" FontSize="16" Padding="3"/>
                 <TextBox Text="{Binding DateOfBirth, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="30" Margin="10,159,0,0" VerticalAlignment="Top" Width="623" FontSize="16" Padding="3"/>
                 <TextBox Text="{Binding SecurityInfo, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="30" Margin="10,196,0,0" VerticalAlignment="Top" Width="623" FontSize="16" Padding="3"/>
-                <Separator HorizontalAlignment="Center"  Width="643" Margin="0,10,0.6,-6"/>
+                <Separator HorizontalAlignment="Center"  Width="643" Margin="0,35,0.6,-30.8"/>
                 <TextBox Text="{Binding ExtraInfo1, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="30" Margin="10,260,0,0" VerticalAlignment="Top" Width="623" FontSize="16" Padding="3"/>
                 <TextBox Text="{Binding ExtraInfo2, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="30" Margin="10,297,0,0" VerticalAlignment="Top" Width="623" FontSize="16" Padding="3"/>
                 <TextBox Text="{Binding ExtraInfo3, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="30" Margin="10,334,0,0" VerticalAlignment="Top" Width="623" FontSize="16" Padding="3"/>

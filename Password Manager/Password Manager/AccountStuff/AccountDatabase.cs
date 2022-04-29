@@ -36,45 +36,47 @@ namespace Password_Manager.AccountStuff
             //public static void SaveFiles(List<AccountStructure> accounts) { SaveFiles(accounts, CentralFolderPath); }
             public static void SaveFiles(List<AccountStructure> accounts, string directory) 
             {
-                List<string> NewAccName     = new List<string>();
-                List<string> NewEmail       = new List<string>();
-                List<string> NewUsername    = new List<string>();
-                List<string> NewPassword    = new List<string>();
-                List<string> NewDateOfBirth = new List<string>();
-                List<string> NewSecurityInf = new List<string>();
-                List<string> NewExtraInfo1  = new List<string>();
-                List<string> NewExtraInfo2  = new List<string>();
-                List<string> NewExtraInfo3  = new List<string>();
-                List<string> NewExtraInfo4  = new List<string>();
-                List<string> NewGroup  = new List<string>();
-
-                for (int i = 0; i < accounts.Count; i++)
+                if (directory != null)
                 {
-                        NewAccName.Add(accounts[i].AccountName);
-                          NewEmail.Add(accounts[i].EmailAddress);
-                       NewUsername.Add(accounts[i].Username);
-                       NewPassword.Add(accounts[i].Password);
-                    NewDateOfBirth.Add(accounts[i].DateOfBirth);
-                    NewSecurityInf.Add(accounts[i].SecurityInfo);
-                     NewExtraInfo1.Add(accounts[i].ExtraInfo1);
-                     NewExtraInfo2.Add(accounts[i].ExtraInfo2);
-                     NewExtraInfo3.Add(accounts[i].ExtraInfo3);
-                     NewExtraInfo4.Add(accounts[i].ExtraInfo4);
-                     NewGroup.Add(accounts[i].Group);
-                }
-                File.WriteAllLines(Path.Combine(directory, AccNameName), NewAccName);
-                File.WriteAllLines(Path.Combine(directory, EmailName), NewEmail);
-                File.WriteAllLines(Path.Combine(directory, UsernameName), NewUsername);
-                File.WriteAllLines(Path.Combine(directory, PasswordName), NewPassword);
-                File.WriteAllLines(Path.Combine(directory, DateOfbirthName), NewDateOfBirth);
-                File.WriteAllLines(Path.Combine(directory, SecurityName), NewSecurityInf);
-                File.WriteAllLines(Path.Combine(directory, ExtraIn1Name), NewExtraInfo1);
-                File.WriteAllLines(Path.Combine(directory, ExtraIn2Name), NewExtraInfo2);
-                File.WriteAllLines(Path.Combine(directory, ExtraIn3Name), NewExtraInfo3);
-                File.WriteAllLines(Path.Combine(directory, ExtraIn4Name), NewExtraInfo4);
-                File.WriteAllLines(Path.Combine(directory, GroupName), NewGroup);
-            }
+                    List<string> NewAccName = new List<string>();
+                    List<string> NewEmail = new List<string>();
+                    List<string> NewUsername = new List<string>();
+                    List<string> NewPassword = new List<string>();
+                    List<string> NewDateOfBirth = new List<string>();
+                    List<string> NewSecurityInf = new List<string>();
+                    List<string> NewExtraInfo1 = new List<string>();
+                    List<string> NewExtraInfo2 = new List<string>();
+                    List<string> NewExtraInfo3 = new List<string>();
+                    List<string> NewExtraInfo4 = new List<string>();
+                    List<string> NewGroup = new List<string>();
 
+                    for (int i = 0; i < accounts.Count; i++)
+                    {
+                        NewAccName.Add(accounts[i].AccountName);
+                        NewEmail.Add(accounts[i].EmailAddress);
+                        NewUsername.Add(accounts[i].Username);
+                        NewPassword.Add(accounts[i].Password);
+                        NewDateOfBirth.Add(accounts[i].DateOfBirth);
+                        NewSecurityInf.Add(accounts[i].SecurityInfo);
+                        NewExtraInfo1.Add(accounts[i].ExtraInfo1);
+                        NewExtraInfo2.Add(accounts[i].ExtraInfo2);
+                        NewExtraInfo3.Add(accounts[i].ExtraInfo3);
+                        NewExtraInfo4.Add(accounts[i].ExtraInfo4);
+                        NewGroup.Add(accounts[i].Group);
+                    }
+                    File.WriteAllLines(Path.Combine(directory, AccNameName), NewAccName);
+                    File.WriteAllLines(Path.Combine(directory, EmailName), NewEmail);
+                    File.WriteAllLines(Path.Combine(directory, UsernameName), NewUsername);
+                    File.WriteAllLines(Path.Combine(directory, PasswordName), NewPassword);
+                    File.WriteAllLines(Path.Combine(directory, DateOfbirthName), NewDateOfBirth);
+                    File.WriteAllLines(Path.Combine(directory, SecurityName), NewSecurityInf);
+                    File.WriteAllLines(Path.Combine(directory, ExtraIn1Name), NewExtraInfo1);
+                    File.WriteAllLines(Path.Combine(directory, ExtraIn2Name), NewExtraInfo2);
+                    File.WriteAllLines(Path.Combine(directory, ExtraIn3Name), NewExtraInfo3);
+                    File.WriteAllLines(Path.Combine(directory, ExtraIn4Name), NewExtraInfo4);
+                    File.WriteAllLines(Path.Combine(directory, GroupName), NewGroup);
+                }
+            }
         }
 
         public static class AccountLoadet

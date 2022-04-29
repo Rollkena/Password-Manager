@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Password_Manager" 
         xmlns:viewmodels="clr-namespace:Password_Manager.ViewModel"
         mc:Ignorable="d" Closing="Window_Closing"
-        Title="MainWindow" Height="731.4" Width="1280">
+        Title="MainWindow" Height="730" Width="1280" ResizeMode="NoResize">
     <Window.DataContext>
         <viewmodels:MainViewModel/>
     </Window.DataContext>
@@ -40,8 +40,8 @@
                     <Button Command ="{Binding SearchForAccountsCommand}" Content="Go!" HorizontalAlignment="Left" Margin="5,315,0,0" VerticalAlignment="Top" Width="90" Height="30" FontSize="16"/>
                     <Button Command="{Binding LoadAccountsCommand}" Content="Reset" HorizontalAlignment="Left" Margin="105,315,0,0" VerticalAlignment="Top" Width="90" Height="30" FontSize="16"/>
                     <Button Command="{Binding SaveResultCommand}" Content="Save Result" HorizontalAlignment="Left" Margin="5,360,0,0" VerticalAlignment="Top" Width="190" Height="30" FontSize="16" Click="Button_Click_2"/>
-                    
-                    <Separator VerticalAlignment="Center" Margin="0,215,0,383.6" Height="28" RenderTransformOrigin="0.5,0.5">
+
+                    <Separator VerticalAlignment="Center" Margin="0,220,0,378.6" Height="28" RenderTransformOrigin="0.5,0.5">
                         <Separator.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform ScaleY="-1"/>
@@ -52,16 +52,20 @@
                         </Separator.RenderTransform>
                     </Separator>
                     <Label Content="Search:" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,233,0,0" FontSize="24" Width="85"/>
-                    <Separator VerticalAlignment="Center" Margin="0,387,0,211.6" Height="28" RenderTransformOrigin="0.5,0.5">
-                        <Separator.RenderTransform>
-                            <TransformGroup>
-                                <ScaleTransform ScaleY="-1"/>
-                                <SkewTransform/>
-                                <RotateTransform/>
-                                <TranslateTransform/>
-                            </TransformGroup>
-                        </Separator.RenderTransform>
-                    </Separator>
+                    <Separator VerticalAlignment="Center" Margin="0,385,0,208.6" Height="33" RenderTransformOrigin="0.5,0.5"/>
+                    <Label Content="Filter:" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="65,390,63,0" FontSize="24" Width="72"/>
+                    <StackPanel HorizontalAlignment="Left" Height="65" Margin="5,425,0,0" VerticalAlignment="Top" Width="190">
+                        <RadioButton GroupName="Languages" Content="All Accounts" FontSize="13" Command="{Binding FilterNoGroup, UpdateSourceTrigger=PropertyChanged }"/>
+                        <RadioButton GroupName="Languages" Content="Favorites" FontSize="13" Command="{Binding FilterFavorites, UpdateSourceTrigger=PropertyChanged }"/>
+                        <RadioButton GroupName="Languages" Content="Important" FontSize="13" Command="{Binding FilterImportant, UpdateSourceTrigger=PropertyChanged }"/>
+                        <RadioButton GroupName="Languages" Content="Needless" FontSize="13" Command="{Binding FilterNeedles, UpdateSourceTrigger=PropertyChanged }"/>
+                    </StackPanel>
+
+                        <!--<ComboBox x:Name="FilterBox" HorizontalAlignment="Left" Margin="10,447,0,0" VerticalAlignment="Top" Width="180" Height="28" FontSize="16" SelectedIndex="{Binding SearchFilter, UpdateSourceTrigger=PropertyChanged}">
+                        <TextBlock>Favorites</TextBlock>
+                        <TextBlock>Needless</TextBlock>
+                        <TextBlock>Important</TextBlock>
+                    </ComboBox>-->
                 </Grid>
             </Grid>
 

@@ -27,7 +27,6 @@ namespace Password_Manager.Views
         {
             InitializeComponent();
             DataContext = new AccountStructure();
-            ComboBox.SelectedItem = ComboBox.FindName("No Group");
         }
 
         public void Reset()
@@ -51,9 +50,18 @@ namespace Password_Manager.Views
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            e.Cancel = true;
-            this.DataContext = new AccountStructure();
-            this.Hide();
+            if (AccName != null)
+            {
+                e.Cancel = true;
+                this.DataContext = new AccountStructure();
+                this.Hide();
+            }
+            else
+            {
+                e.Cancel = true;
+                MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Пожалуйста, заполните имя аккаунта", "Closing Manager", System.Windows.MessageBoxButton.YesNo);
+            }
+           
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

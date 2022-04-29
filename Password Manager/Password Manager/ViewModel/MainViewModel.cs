@@ -55,11 +55,6 @@ namespace Password_Manager.ViewModel
         }
 
 
-
-
-
-
-
         public AccountListItem SelectedAccountItem 
         {
             get 
@@ -104,6 +99,11 @@ namespace Password_Manager.ViewModel
         public ICommand SearchForAccountsCommand { get; set; }
         public ICommand SaveResultCommand { get; set; }
 
+        public ICommand FilterNoGroup { get; set; }
+        public ICommand FilterFavorites { get; set; }
+        public ICommand FilterImportant { get; set; }
+        public ICommand FilterNeedles { get; set; }
+
 
 
         public MainViewModel() 
@@ -123,11 +123,57 @@ namespace Password_Manager.ViewModel
             EditAccountWindow = new EditAccountWindow();
             AccountViewer = new AccountContentViewer();
 
+            FilterNoGroup = new Command(FNoGroup);
+            FilterFavorites = new Command(FFavorites);
+            FilterImportant = new Command(FImportant);
+            FilterNeedles = new Command(FNeedless);
+
             AccountDatabase.CreateDirThinghs();
             AccountDatabase.CreateDirThinghs2();
 
             NewAccountWindow.AddAccountCallback = this.AddAccount;
         }
+
+
+        private void FNoGroup()
+        {
+            Accounts.Clear();
+            foreach (AccountStructure it in AccountDatabase.AccountLoadet.LoadFiles())
+            {
+                AddAccount(it);
+            }
+        }
+        private void FFavorites()
+        {
+            Accounts.Clear();
+            foreach (AccountStructure accStr in AccountDatabase.AccountLoadet.LoadFiles())
+            {
+                if (accStr.Group.Contains("0")) { AddAccount(accStr); }
+
+            }
+        }
+        private void FImportant()
+        {
+            Accounts.Clear();
+            foreach (AccountStructure accStr in AccountDatabase.AccountLoadet.LoadFiles())
+            {
+                if (accStr.Group.Contains("1")) { AddAccount(accStr); }
+
+            }
+        }
+        private void FNeedless()
+        {
+            Accounts.Clear();
+            foreach (AccountStructure accStr in AccountDatabase.AccountLoadet.LoadFiles())
+            {
+                if (accStr.Group.Contains("2")) { AddAccount(accStr); }
+
+            }
+        }
+
+
+
+
 
         public string saveSearch;
         private void SaveResult()
@@ -146,7 +192,6 @@ namespace Password_Manager.ViewModel
             }
             AccountDatabase.AccountSaver.SaveFiles(accs, saveSearch);
         }
-
         private void SaveAccounts()
         {
             List<AccountStructure> accs = new List<AccountStructure>();
@@ -159,13 +204,19 @@ namespace Password_Manager.ViewModel
         }
         private void LoadAccounts()
         {
-            Accounts.Clear();
-            foreach (AccountStructure it in AccountDatabase.AccountLoadet.LoadFiles())
+            try
             {
-                AddAccount(it);
+                Accounts.Clear();
+                foreach (AccountStructure it in AccountDatabase.AccountLoadet.LoadFiles())
+                {
+                    AddAccount(it);
+                }
+            }
+            catch
+            {
+                MainWindow.Warning();
             }
         }
-
         private void SearchForAccounts()
         {
             Accounts.Clear();

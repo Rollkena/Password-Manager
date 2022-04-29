@@ -28,7 +28,7 @@ namespace Password_Manager
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Are you sure? \nAre you really sure???", "Closing Manager", System.Windows.MessageBoxButton.YesNo);
+            MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Вы уверены?", "Closing Manager", System.Windows.MessageBoxButton.YesNo);
             if (messageBoxResult == MessageBoxResult.Yes)
             {
                 e.Cancel = true;
@@ -38,6 +38,11 @@ namespace Password_Manager
             {
                 e.Cancel = true;
             }
+        }
+
+        public static void Warning()
+        {
+            MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Ошибка.\nВозможно, кому-то не следовало изменять файлы самому.", "Error");
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
