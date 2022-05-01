@@ -39,8 +39,15 @@ namespace Password_Manager.Views
         {
             if (e.Key == Key.Enter)
             {
-                AddAccountCallback?.Invoke();
-                this.Close();
+                if (AccountContext.AccountName != null)
+                {
+                    AddAccountCallback?.Invoke();
+                    this.Close();
+                }
+                else
+                {
+                    MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Пожалуйста, заполните имя аккаунта", "Warning");
+                }
             }
             if (e.Key == Key.Escape)
             {
@@ -50,7 +57,7 @@ namespace Password_Manager.Views
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            if (AccName != null)
+            if (AccountContext.AccountName != null)
             {
                 e.Cancel = true;
                 this.DataContext = new AccountStructure();
@@ -59,15 +66,15 @@ namespace Password_Manager.Views
             else
             {
                 e.Cancel = true;
-                MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Пожалуйста, заполните имя аккаунта", "Closing Manager", System.Windows.MessageBoxButton.YesNo);
+                MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Пожалуйста, заполните имя аккаунта", "Warning");
             }
            
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            AddAccountCallback?.Invoke();
-            this.Close();
+            this.Hide();
+
         }
     }
 }

@@ -45,6 +45,7 @@ namespace Password_Manager
             MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Ошибка.\nВозможно, кому-то не следовало изменять файлы самому.", "Error");
         }
 
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Button2.Visibility = Visibility.Hidden;

@@ -29,6 +29,7 @@ namespace Password_Manager.Views
             if (e.Key == Key.Enter) 
             {
                 this.Hide();
+
             }
             if (e.Key == Key.Escape) 
             {
