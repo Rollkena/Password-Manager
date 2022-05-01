@@ -76,5 +76,15 @@ namespace Password_Manager.Views
             this.Hide();
 
         }
+
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            PassBox.FontFamily = new FontFamily("Segoe UI");
+        }
+
+        private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            PassBox.FontFamily = new FontFamily("Segoe MDL2 Assets");
+        }
     }
 }

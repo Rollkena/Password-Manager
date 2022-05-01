@@ -24,11 +24,12 @@ namespace Password_Manager
         public MainWindow()
         {
             InitializeComponent();
+            
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Вы уверены?", "Closing Manager", System.Windows.MessageBoxButton.YesNo);
+            MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Are you sure?", "Closing Manager", System.Windows.MessageBoxButton.YesNo);
             if (messageBoxResult == MessageBoxResult.Yes)
             {
                 e.Cancel = true;
@@ -42,9 +43,26 @@ namespace Password_Manager
 
         public static void Warning()
         {
-            MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Ошибка.\nВозможно, кому-то не следовало изменять файлы самому.", "Error");
+            MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Повреждены файлы программы\nЗагрузите предыдущую сохранённую версию или живите в проклятом мире, который сами и создали", "Error");
         }
+        public static void WarningAllowDelete()
+        {
+            MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Please, reset search and filter to delete account.", "Error");
+        }
+        public static int SwitchDel = 0;
 
+        public static void Warning_Delete()
+        {
+            MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Are you sure?", "Closing Manager", System.Windows.MessageBoxButton.YesNo);
+            if (messageBoxResult == MessageBoxResult.Yes)
+            {
+                SwitchDel = 1;
+            }
+            else
+            {
+                SwitchDel = 0;
+            }
+        }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {

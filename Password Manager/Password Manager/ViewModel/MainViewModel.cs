@@ -34,6 +34,7 @@ namespace Password_Manager.ViewModel
 
         public string ErrorMessege;
 
+
         private int _selectedIndex;
         public int SelectedIndex 
         {
@@ -43,6 +44,7 @@ namespace Password_Manager.ViewModel
             } 
         }
         public bool AccountIsSelected { get => SelectedIndex > -1; }
+        //считывает индекс выбранного аккаунта
 
 
         private string _searchText;
@@ -53,6 +55,7 @@ namespace Password_Manager.ViewModel
                 _searchText = value; RaisePropertyChanged();
             }
         }
+        //считывает текст по которому производится поиск
 
 
         public AccountListItem SelectedAccountItem 
@@ -69,6 +72,7 @@ namespace Password_Manager.ViewModel
                 }
             }
         }
+        //возвращает выбранный аккаунт
         public AccountStructure SelectedAccountStructure 
         {
             get 
@@ -83,11 +87,12 @@ namespace Password_Manager.ViewModel
                 } 
             } 
         } 
+        //возвращает информацию выбранного аккаунта
 
         public AddAccountWindow NewAccountWindow { get; set; }
         public EditAccountWindow EditAccountWindow { get; set; }
         public AccountContentViewer AccountViewer { get; set; }
-
+        //вызов окон
 
         public ICommand AddAccountCommand { get; set; }
         public ICommand EditAccountCommand { get; set; }
@@ -103,11 +108,14 @@ namespace Password_Manager.ViewModel
         public ICommand FilterFavorites { get; set; }
         public ICommand FilterImportant { get; set; }
         public ICommand FilterNeedles { get; set; }
+        
+        //определение комманд
 
 
 
         public MainViewModel() 
         {
+            LoadAccounts();
             AddAccountCommand = new Command(ShowAddAccountWindow);
             EditAccountCommand = new Command(ShowEditAccountWindow);
             DeleteAccountCommand = new Command(DeleteAccount);
@@ -127,51 +135,85 @@ namespace Password_Manager.ViewModel
             FilterFavorites = new Command(FFavorites);
             FilterImportant = new Command(FImportant);
             FilterNeedles = new Command(FNeedless);
+            //создание комманд через функции
 
             AccountDatabase.CreateDirThinghs();
             AccountDatabase.CreateDirThinghs2();
+            //создание файлов 
 
             NewAccountWindow.AddAccountCallback = this.AddAccount;
         }
 
 
+        private int isFilterOn = 0;
         private void FNoGroup()
         {
-            Accounts.Clear();
-            foreach (AccountStructure it in AccountDatabase.AccountLoadet.LoadFiles())
+            try
             {
-                AddAccount(it);
+                Accounts.Clear();
+                foreach (AccountStructure it in AccountDatabase.AccountLoadet.LoadFiles())
+                {
+                    AddAccount(it);
+                }
+                isFilterOn = 0;
+            }
+            catch
+            {
+                MainWindow.Warning();
             }
         }
         private void FFavorites()
         {
-            Accounts.Clear();
-            foreach (AccountStructure accStr in AccountDatabase.AccountLoadet.LoadFiles())
+            try
             {
-                if (accStr.Group.Contains("0")) { AddAccount(accStr); }
-
+                Accounts.Clear();
+                foreach (AccountStructure accStr in AccountDatabase.AccountLoadet.LoadFiles())
+                {
+                    if (accStr.Group.Contains("0")) { AddAccount(accStr); }
+                }
+                isFilterOn = 1;
+            }
+            catch
+            {
+                MainWindow.Warning();
             }
         }
         private void FImportant()
         {
-            Accounts.Clear();
-            foreach (AccountStructure accStr in AccountDatabase.AccountLoadet.LoadFiles())
+            
+            try
             {
-                if (accStr.Group.Contains("1")) { AddAccount(accStr); }
-
+                Accounts.Clear();
+                foreach (AccountStructure accStr in AccountDatabase.AccountLoadet.LoadFiles())
+                {
+                    if (accStr.Group.Contains("1")) { AddAccount(accStr); }
+                }
+                isFilterOn = 1;
+            }
+            catch
+            {
+                MainWindow.Warning();
             }
         }
         private void FNeedless()
         {
-            Accounts.Clear();
-            foreach (AccountStructure accStr in AccountDatabase.AccountLoadet.LoadFiles())
+            
+            try
             {
-                if (accStr.Group.Contains("2")) { AddAccount(accStr); }
-
+                Accounts.Clear();
+                foreach (AccountStructure accStr in AccountDatabase.AccountLoadet.LoadFiles())
+                {
+                    if (accStr.Group.Contains("2")) { AddAccount(accStr); }
+                }
+                isFilterOn = 1;
+            }
+            catch
+            {
+                MainWindow.Warning();
             }
         }
 
-
+        //для фильтрации
 
 
 
@@ -192,6 +234,8 @@ namespace Password_Manager.ViewModel
             }
             AccountDatabase.AccountSaver.SaveFiles(accs, saveSearch);
         }
+        //сохранение результата поиска в папку, выбранную пользоватеелм
+
         private void SaveAccounts()
         {
             List<AccountStructure> accs = new List<AccountStructure>();
@@ -202,10 +246,13 @@ namespace Password_Manager.ViewModel
             }
             AccountDatabase.AccountSaver.SaveFiles(accs, CentralFolderPath);
         }
+        //сохранение аккаунтов
+
         private void LoadAccounts()
         {
             try
             {
+
                 Accounts.Clear();
                 foreach (AccountStructure it in AccountDatabase.AccountLoadet.LoadFiles())
                 {
@@ -217,6 +264,8 @@ namespace Password_Manager.ViewModel
                 MainWindow.Warning();
             }
         }
+        //загрузка аккаунтов из базы данных
+
         private void SearchForAccounts()
         {
             Accounts.Clear();
@@ -227,17 +276,18 @@ namespace Password_Manager.ViewModel
                     if (accStr.AccountName.ToLower().Contains(SearchText)) { AddAccount(accStr); }
                     else if (accStr.EmailAddress.ToLower().Contains(SearchText)) { AddAccount(accStr); }
                     else if (accStr.Username.ToLower().Contains(SearchText)) { AddAccount(accStr); }
-                    else if (accStr.Password.ToLower().Contains(SearchText)) { AddAccount(accStr); }
+                    //else if (accStr.Password.ToLower().Contains(SearchText)) { AddAccount(accStr); }
                     else if (accStr.DateOfBirth.ToLower().Contains(SearchText)) { AddAccount(accStr); }
                     else if (accStr.SecurityInfo.ToLower().Contains(SearchText)) { AddAccount(accStr); }
                     else if (accStr.ExtraInfo1.ToLower().Contains(SearchText)) { AddAccount(accStr); }
                     else if (accStr.ExtraInfo2.ToLower().Contains(SearchText)) { AddAccount(accStr); }
                     else if (accStr.ExtraInfo3.ToLower().Contains(SearchText)) { AddAccount(accStr); }
                     else if (accStr.ExtraInfo4.ToLower().Contains(SearchText)) { AddAccount(accStr); }
-                    //else if (accStr.ExtraInfo5.ToLower().Contains(SearchText)) { AddAccount(accStr); }
                 }
             }
         }
+        //работа поиску
+
 
 
         private void ShowAccountContentWindow() 
@@ -247,36 +297,59 @@ namespace Password_Manager.ViewModel
                 SetAccountWindowContext(); AccountViewer.Show(); 
             } 
         }
+        //отображение окна контекста выбранного аккаунта
         private void SetAccountWindowContext() 
         {
             AccountViewer.DataContext = SelectedAccountStructure; 
         }
+        //считать инфомрацию в структуру
+
+
         private void AddAccount() 
         {
-            AddAccount(NewAccountWindow.AccountContext); 
+            LoadAccounts();
+            AddAccount(NewAccountWindow.AccountContext);
+            SaveAccounts();
         }
         private void AddAccount(AccountStructure acc) 
         {
+            
             AccountListItem all = new AccountListItem();
             all.DataContext = acc;
             all.ShowContentWindowCallback = ShowAccountContentWindow;
             
             Accounts.Add(all);
+            //SaveAccounts();
         }
         private void ShowAddAccountWindow() { NewAccountWindow.Show(); }
+        //показ окна и последующее добавление аккаунта
 
-        //private void EditAccount() { }
-        //private void EditAccount(AccountStructure acc) { }
+
         private void ShowEditAccountWindow() { SetEditWindowContext(); EditAccountWindow.Show(); }
         private void SetEditWindowContext() { EditAccountWindow.DataContext = SelectedAccountStructure; }
+        //показ окна изменения. изменения происодят в реальном времени за счет динамической коллекции
+
         private void DeleteAccount() 
         {
-            if (SelectedIndex > -1) 
+            if ((SearchText == null || SearchText == "" ) && isFilterOn == 0)
             {
-                Accounts.RemoveAt(SelectedIndex); 
+                MainWindow.Warning_Delete();
+                if (MainWindow.SwitchDel == 1)
+                {
+                    if (SelectedIndex > -1)
+                    {
+                        Accounts.RemoveAt(SelectedIndex);
+                    }
+                    MainWindow.SwitchDel = 0;
+                    SaveAccounts();
+                }
+            }
+            else
+            {
+                MainWindow.WarningAllowDelete();
             }
         }
-
+        //удаление аккаунтов с подтверждением от пользователя и сохранением в базу
 
         
     }
