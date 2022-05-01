@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Password_Manager.AccountStuff;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,6 +20,10 @@ namespace Password_Manager.Views
     /// </summary>
     public partial class EditAccountWindow : Window
     {
+
+        public AccountStructure AccountContext { get => this.DataContext as AccountStructure; }
+        public Action SaveAccountCallback { get; set; }
+        public Action LoadAccountCallback { get; set; }
         public EditAccountWindow()
         {
             InitializeComponent();
@@ -28,7 +33,16 @@ namespace Password_Manager.Views
         {
             if (e.Key == Key.Enter) 
             {
-                this.Hide();
+                if (AccountContext.AccountName != null && AccountContext.AccountName.Replace(" ", "") != "")
+                {
+                    SaveAccountCallback?.Invoke();
+                    this.DataContext = null;
+                    this.Hide();
+                }
+                else
+                {
+                    MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Пожалуйста, заполните имя аккаунта", "Warning");
+                }
 
             }
             if (e.Key == Key.Escape) 
@@ -40,14 +54,22 @@ namespace Password_Manager.Views
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             e.Cancel = true;
-            this.DataContext = null;
             this.Hide();
         }
-
         private void Button_Click(object sender, RoutedEventArgs e)
+        
         {
-            this.DataContext = null;
-            this.Hide();
+            
+            if (AccountContext.AccountName != null && AccountContext.AccountName.Replace(" ", "") != "")
+            {
+                SaveAccountCallback?.Invoke();
+                this.DataContext = null;
+                this.Hide();
+            }
+            else
+            {
+                MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Пожалуйста, заполните имя аккаунта", "Warning");
+            }
         }
 
         private void CheckBox_Checked(object sender, RoutedEventArgs e)
@@ -58,6 +80,12 @@ namespace Password_Manager.Views
         private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
             PassBox.FontFamily = new FontFamily("Segoe MDL2 Assets");
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            LoadAccountCallback?.Invoke();
+            this.Hide();
         }
     }
 }

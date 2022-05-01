@@ -8,15 +8,16 @@
         Title="EditAccountWindow" Height="525" Width="800" KeyDown="Window_KeyDown" Closing ="Window_Closing" ResizeMode="NoResize">
     <Grid>
         <Grid VerticalAlignment="Top" Height="80">
-            <Button  Content="Save Changes" HorizontalAlignment="Left" Margin="650,12,0,0" VerticalAlignment="Top" Width="125" Height="57" FontSize="16" Click="Button_Click"  />
+            <Button  Content="Save Changes" HorizontalAlignment="Left" Margin="525,13,0,0" VerticalAlignment="Top" Width="125" Height="57" FontSize="16" Click="Button_Click"  />
+            <Button  Content="Go Back" HorizontalAlignment="Left" Margin="659,13,0,0" VerticalAlignment="Top" Width="125" Height="57" FontSize="16" Click="Button_Click_1"  />
             <Label Content="Edit an Account" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="36" Margin="10,12,498.6,10" Width="285"/>
-            <ComboBox x:Name="ComboBox" HorizontalAlignment="Left" Margin="520,42,0,0" VerticalAlignment="Top" Width="115" Height="28" FontSize="16" IsReadOnly="True"  SelectedIndex="{Binding Group, UpdateSourceTrigger=PropertyChanged}">
+            <ComboBox x:Name="ComboBox" HorizontalAlignment="Left" Margin="395,42,0,0" VerticalAlignment="Top" Width="115" Height="28" FontSize="16" IsReadOnly="True"  SelectedIndex="{Binding Group, UpdateSourceTrigger=PropertyChanged}">
                 <TextBlock>Favorites</TextBlock>
                 <TextBlock>Important</TextBlock>
                 <TextBlock>Needless</TextBlock>
                 <TextBlock>No Group</TextBlock>
             </ComboBox>
-            <Label Content="Choose Group:" HorizontalAlignment="Left" Margin="520,10,0,0" VerticalAlignment="Top" Height="32" Width="115" FontSize="16"/>
+            <Label Content="Choose Group:" HorizontalAlignment="Left" Margin="395,10,0,0" VerticalAlignment="Top" Height="32" Width="115" FontSize="16"/>
         </Grid>
         <Grid Margin="0,80,0,0">
             <Grid HorizontalAlignment="Left" Width="150">
@@ -50,7 +51,7 @@
                 <TextBox x:Name="PassBox" Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="30" Margin="10,121,0,0" VerticalAlignment="Top" Width="623" FontSize="16" Padding="3" FontFamily="Segoe MDL2 Assets"/>
                 <TextBox Text="{Binding DateOfBirth, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="30" Margin="10,159,0,0" VerticalAlignment="Top" Width="623" FontSize="16" Padding="3"/>
                 <TextBox Text="{Binding SecurityInfo, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="30" Margin="10,196,0,0" VerticalAlignment="Top" Width="623" FontSize="16" Padding="3"/>
-                <Separator HorizontalAlignment="Center"  Width="643" Margin="0,35,0.6,-30.8"/>
+                <Separator HorizontalAlignment="Center"  Width="643" Margin="0,35,0.6,0.2"/>
                 <TextBox Text="{Binding ExtraInfo1, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="30" Margin="10,260,0,0" VerticalAlignment="Top" Width="623" FontSize="16" Padding="3"/>
                 <TextBox Text="{Binding ExtraInfo2, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="30" Margin="10,297,0,0" VerticalAlignment="Top" Width="623" FontSize="16" Padding="3"/>
                 <TextBox Text="{Binding ExtraInfo3, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="30" Margin="10,334,0,0" VerticalAlignment="Top" Width="623" FontSize="16" Padding="3"/>

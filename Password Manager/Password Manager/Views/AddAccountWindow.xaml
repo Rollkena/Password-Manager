@@ -8,15 +8,16 @@
         Title="AddAccountWindow" Height="525" Width="800" ResizeMode="NoResize">
     <Grid>
         <Grid VerticalAlignment="Top" Height="80">
-            <Button  Content="Go Back" HorizontalAlignment="Left" Margin="655,10,0,0" VerticalAlignment="Top" Width="125" Height="57" FontSize="16" Click="Button_Click"  />
+            <Button  Content="Go Back" HorizontalAlignment="Left" Margin="659,13,0,0" VerticalAlignment="Top" Width="125" Height="57" FontSize="16" Click="Button_Click"  />
+            <Button  Content="Add Account" HorizontalAlignment="Left" Margin="525,13,0,0" VerticalAlignment="Top" Width="125" Height="57" FontSize="16" Click="Button_Click_1"   />
             <Label Content="Add a New Account" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="36" Margin="10,12,433.6,10" Width="350"/>
-            <ComboBox x:Name="ComboBox" HorizontalAlignment="Left" Margin="520,42,0,0" VerticalAlignment="Top" Width="115" Height="28" FontSize="16" IsReadOnly="True"  SelectedIndex="{Binding Group, UpdateSourceTrigger=PropertyChanged}">
+            <ComboBox x:Name="ComboBox" HorizontalAlignment="Left" Margin="395,42,0,0" VerticalAlignment="Top" Width="115" Height="28" FontSize="16" IsReadOnly="True"  SelectedIndex="{Binding Group, UpdateSourceTrigger=PropertyChanged}">
                 <TextBlock>Favorites</TextBlock>
                 <TextBlock>Important</TextBlock>
                 <TextBlock>Needless</TextBlock>
                 <TextBlock>No Group</TextBlock>
             </ComboBox>
-            <Label Content="Choose Group:" HorizontalAlignment="Left" Margin="520,10,0,0" VerticalAlignment="Top" Height="32" Width="115" FontSize="16"/>
+            <Label Content="Choose Group:" HorizontalAlignment="Left" Margin="395,10,0,0" VerticalAlignment="Top" Height="32" Width="115" FontSize="16"/>
         </Grid>
         <Grid Margin="0,80,0,0">
             <Grid HorizontalAlignment="Left" Width="150">

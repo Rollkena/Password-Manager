@@ -16,52 +16,30 @@
                 <Label Content="Accounts list:" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="24"/>
             </Grid>
 
-            <Grid HorizontalAlignment="Left" Width="200" Background="#FFF3F2E9">
+            <Grid HorizontalAlignment="Left" Width="200" Background="#FFF3F2E9" >
                 <Label Content="Tools:" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,20,0,0" FontSize="24"/>
                 <Grid Margin="0,75,0,0" Background="#FFF3F2E9">
                     <Button Command="{Binding AddAccountCommand}" Content="Add Account" VerticalAlignment="Top" Height="50" Margin="5,5,5,0" FontSize="16"/>
                     <Button Command="{Binding EditAccountCommand}" Content="Edit Account" VerticalAlignment="Top" Height="50" Margin="5,60,5,0" FontSize="16"/>
                     <Button Command="{Binding DeleteAccountCommand}" Content="Delete Account" VerticalAlignment="Top" Height="50" Margin="5,115,5,0" FontSize="16"/>
                     <Button Command="{Binding ShowAccountInfoCommand}" Content="Show Account Info" VerticalAlignment="Top" Height="50" Margin="5,170,5,0" FontSize="16"/>
-                    <Button Command="{Binding SaveAccountsCommand}" Content="Are you sure?" VerticalAlignment="Top" Height="50" Margin="5,560,5,0" FontSize="16" Click="Button_Click_1"/>
-                    <Button x:Name="Button2" Content="Save Accounts" VerticalAlignment="Top" Height="50" Margin="5,560,5,0" FontSize="16" Click="Button_Click"/>
-                    <Button Command="{Binding LoadAccountsCommand}" Content="Load Accounts" VerticalAlignment="Top" Height="50" Margin="5,505,5,0" FontSize="16"/>
-                    <Separator VerticalAlignment="Center" Margin="0,482,0,116.6" Height="28" RenderTransformOrigin="0.5,0.5">
-                        <Separator.RenderTransform>
-                            <TransformGroup>
-                                <ScaleTransform ScaleY="-1"/>
-                                <SkewTransform/>
-                                <RotateTransform/>
-                                <TranslateTransform/>
-                            </TransformGroup>
-                        </Separator.RenderTransform>
-                    </Separator>
-                    <TextBox HorizontalAlignment="Left" Height="30" Margin="5,280,0,0" TextWrapping="Wrap" Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="190" FontSize="16"/>
-                    <Button Command ="{Binding SearchForAccountsCommand}" Content="Go!" HorizontalAlignment="Left" Margin="5,315,0,0" VerticalAlignment="Top" Width="90" Height="30" FontSize="16"/>
-                    <Button Command="{Binding LoadAccountsCommand}" Content="Reset" HorizontalAlignment="Left" Margin="105,315,0,0" VerticalAlignment="Top" Width="90" Height="30" FontSize="16"/>
-                    <Button Command="{Binding SaveResultCommand}" Content="Save Result" HorizontalAlignment="Left" Margin="5,360,0,0" VerticalAlignment="Top" Width="190" Height="30" FontSize="16" Click="Button_Click_2"/>
+                    <TextBox HorizontalAlignment="Left" Height="30" Margin="5,307,0,0" TextWrapping="Wrap" Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="190" FontSize="16"/>
+                    <Button Command ="{Binding SearchForAccountsCommand}" Content="Go!" HorizontalAlignment="Left" Margin="5,342,0,0" VerticalAlignment="Top" Width="90" Height="30" FontSize="16"/>
+                    <Button Command="{Binding LoadAccountsCommand}" Content="Reset" HorizontalAlignment="Left" Margin="105,342,0,0" VerticalAlignment="Top" Width="90" Height="30" FontSize="16"/>
+                    <Button Command="{Binding SaveResultCommand}" Content="Save Result" HorizontalAlignment="Left" Margin="5,379,0,0" VerticalAlignment="Top" Width="190" Height="30" FontSize="16" />
 
-                    <Separator VerticalAlignment="Center" Margin="0,220,0,378.6" Height="28" RenderTransformOrigin="0.5,0.5">
-                        <Separator.RenderTransform>
-                            <TransformGroup>
-                                <ScaleTransform ScaleY="-1"/>
-                                <SkewTransform/>
-                                <RotateTransform/>
-                                <TranslateTransform/>
-                            </TransformGroup>
-                        </Separator.RenderTransform>
-                    </Separator>
-                    <Label Content="Search:" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,233,0,0" FontSize="24" Width="85"/>
-                    <Separator VerticalAlignment="Center" Margin="0,385,0,208.6" Height="33" RenderTransformOrigin="0.5,0.5"/>
-                    <Label Content="Filter:" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="65,390,63,0" FontSize="24" Width="72"/>
-                    <StackPanel HorizontalAlignment="Left" Height="65" Margin="5,425,0,0" VerticalAlignment="Top" Width="190">
-                        <RadioButton GroupName="Languages" Content="All Accounts" FontSize="13" Command="{Binding FilterNoGroup, UpdateSourceTrigger=PropertyChanged }"/>
-                        <RadioButton GroupName="Languages" Content="Favorites" FontSize="13" Command="{Binding FilterFavorites, UpdateSourceTrigger=PropertyChanged }"/>
-                        <RadioButton GroupName="Languages" Content="Important" FontSize="13" Command="{Binding FilterImportant, UpdateSourceTrigger=PropertyChanged }"/>
-                        <RadioButton GroupName="Languages" Content="Needless" FontSize="13" Command="{Binding FilterNeedles, UpdateSourceTrigger=PropertyChanged }"/>
+                    <Separator VerticalAlignment="Center" Margin="0,232,0,365" Height="28" RenderTransformOrigin="0.5,0.5"/>
+                    <Label Content="Search:" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="55,253,60,0" FontSize="24" Width="85"/>
+                    <Separator VerticalAlignment="Center" Margin="0,417,0,175" Height="33" RenderTransformOrigin="0.5,0.5"/>
+                    <Label Content="Filter:" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="64,433,64,0" FontSize="24" Width="72"/>
+                    <StackPanel HorizontalAlignment="Left" Height="138" Margin="5,477,0,0" VerticalAlignment="Top" Width="190">
+                        <RadioButton GroupName="Languages" Content="All Accounts" FontSize="17" Command="{Binding FilterNoGroup, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0.4,0" Height="29"/>
+                        <RadioButton GroupName="Languages" Content="Favorites" FontSize="17" Command="{Binding FilterFavorites, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0.4,0" Height="29"/>
+                        <RadioButton GroupName="Languages" Content="Important" FontSize="17" Command="{Binding FilterImportant, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0.4,0" Height="29"/>
+                        <RadioButton GroupName="Languages" Content="Needless" FontSize="17" Command="{Binding FilterNeedles, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0.4,0" Height="29"/>
                     </StackPanel>
 
-                        <!--<ComboBox x:Name="FilterBox" HorizontalAlignment="Left" Margin="10,447,0,0" VerticalAlignment="Top" Width="180" Height="28" FontSize="16" SelectedIndex="{Binding SearchFilter, UpdateSourceTrigger=PropertyChanged}">
+                    <!--<ComboBox x:Name="FilterBox" HorizontalAlignment="Left" Margin="10,447,0,0" VerticalAlignment="Top" Width="180" Height="28" FontSize="16" SelectedIndex="{Binding SearchFilter, UpdateSourceTrigger=PropertyChanged}">
                         <TextBlock>Favorites</TextBlock>
                         <TextBlock>Needless</TextBlock>
                         <TextBlock>Important</TextBlock>
@@ -74,7 +52,7 @@
                          ItemsSource="{Binding Accounts, UpdateSourceTrigger=PropertyChanged}" 
                          SelectedIndex="{Binding SelectedIndex, UpdateSourceTrigger=PropertyChanged}"
                          HorizontalAlignment="Stretch"
-                         HorizontalContentAlignment="Stretch" ScrollViewer.VerticalScrollBarVisibility="Visible"/>
+                         HorizontalContentAlignment="Stretch" ScrollViewer.VerticalScrollBarVisibility="Visible" Margin="0,0,-0.4,0"/>
             </Grid>
         </Grid>
     </Grid>

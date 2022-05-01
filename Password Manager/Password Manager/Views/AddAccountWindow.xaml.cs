@@ -39,7 +39,7 @@ namespace Password_Manager.Views
         {
             if (e.Key == Key.Enter)
             {
-                if (AccountContext.AccountName != null)
+                if (AccountContext.AccountName != null && AccountContext.AccountName.Replace(" ", "") != "")
                 {
                     AddAccountCallback?.Invoke();
                     this.Close();
@@ -57,18 +57,19 @@ namespace Password_Manager.Views
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            if (AccountContext.AccountName != null)
-            {
-                e.Cancel = true;
-                this.DataContext = new AccountStructure();
-                this.Hide();
-            }
-            else
-            {
-                e.Cancel = true;
-                MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Пожалуйста, заполните имя аккаунта", "Warning");
-            }
-           
+            //if (AccountContext.AccountName != null)
+            //{
+            //    e.Cancel = true;
+            //    this.DataContext = new AccountStructure();
+            //    this.Hide();
+            //}
+            //else
+            //{
+            //    e.Cancel = true;
+            //    MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Пожалуйста, заполните имя аккаунта", "Warning");
+            //}
+            e.Cancel = true;
+            this.Hide();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -85,6 +86,19 @@ namespace Password_Manager.Views
         private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
             PassBox.FontFamily = new FontFamily("Segoe MDL2 Assets");
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            if (AccountContext.AccountName != null && AccountContext.AccountName.Replace(" ", "") != "")
+            {
+                AddAccountCallback?.Invoke();
+                this.Close();
+            }
+            else
+            {
+                MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Пожалуйста, заполните имя аккаунта", "Warning");
+            }
         }
     }
 }

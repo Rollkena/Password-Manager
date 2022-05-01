@@ -142,6 +142,8 @@ namespace Password_Manager.ViewModel
             //создание файлов 
 
             NewAccountWindow.AddAccountCallback = this.AddAccount;
+            EditAccountWindow.SaveAccountCallback = this.SaveAccounts;
+            EditAccountWindow.LoadAccountCallback = this.LoadAccounts;
         }
 
 
@@ -268,22 +270,29 @@ namespace Password_Manager.ViewModel
 
         private void SearchForAccounts()
         {
-            Accounts.Clear();
-            if (SearchText != null)
+            try
             {
-                foreach (AccountStructure accStr in AccountDatabase.AccountLoadet.LoadFiles())
+                Accounts.Clear();
+                if (SearchText != null)
                 {
-                    if (accStr.AccountName.ToLower().Contains(SearchText)) { AddAccount(accStr); }
-                    else if (accStr.EmailAddress.ToLower().Contains(SearchText)) { AddAccount(accStr); }
-                    else if (accStr.Username.ToLower().Contains(SearchText)) { AddAccount(accStr); }
-                    //else if (accStr.Password.ToLower().Contains(SearchText)) { AddAccount(accStr); }
-                    else if (accStr.DateOfBirth.ToLower().Contains(SearchText)) { AddAccount(accStr); }
-                    else if (accStr.SecurityInfo.ToLower().Contains(SearchText)) { AddAccount(accStr); }
-                    else if (accStr.ExtraInfo1.ToLower().Contains(SearchText)) { AddAccount(accStr); }
-                    else if (accStr.ExtraInfo2.ToLower().Contains(SearchText)) { AddAccount(accStr); }
-                    else if (accStr.ExtraInfo3.ToLower().Contains(SearchText)) { AddAccount(accStr); }
-                    else if (accStr.ExtraInfo4.ToLower().Contains(SearchText)) { AddAccount(accStr); }
+                    foreach (AccountStructure accStr in AccountDatabase.AccountLoadet.LoadFiles())
+                    {
+                        if (accStr.AccountName.ToLower().Contains(SearchText)) { AddAccount(accStr); }
+                        else if (accStr.EmailAddress.ToLower().Contains(SearchText)) { AddAccount(accStr); }
+                        else if (accStr.Username.ToLower().Contains(SearchText)) { AddAccount(accStr); }
+                        //else if (accStr.Password.ToLower().Contains(SearchText)) { AddAccount(accStr); }
+                        else if (accStr.DateOfBirth.ToLower().Contains(SearchText)) { AddAccount(accStr); }
+                        else if (accStr.SecurityInfo.ToLower().Contains(SearchText)) { AddAccount(accStr); }
+                        else if (accStr.ExtraInfo1.ToLower().Contains(SearchText)) { AddAccount(accStr); }
+                        else if (accStr.ExtraInfo2.ToLower().Contains(SearchText)) { AddAccount(accStr); }
+                        else if (accStr.ExtraInfo3.ToLower().Contains(SearchText)) { AddAccount(accStr); }
+                        else if (accStr.ExtraInfo4.ToLower().Contains(SearchText)) { AddAccount(accStr); }
+                    }
                 }
+            }
+            catch
+            {
+                MainWindow.Warning();
             }
         }
         //работа поиску

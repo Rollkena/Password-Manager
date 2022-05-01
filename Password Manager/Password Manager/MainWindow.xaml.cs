@@ -64,20 +64,5 @@ namespace Password_Manager
             }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            Button2.Visibility = Visibility.Hidden;
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            Button2.Visibility = Visibility.Visible;
-        }
-
-        public string saveSearch;
-        private void Button_Click_2(object sender, RoutedEventArgs e)
-        {
-            
-        }
     }
 }
