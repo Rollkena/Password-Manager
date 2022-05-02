@@ -11,12 +11,11 @@ namespace Password_Manager.AccountStuff
     public static class AccountDatabase
     {
 
-        //public static string CentralFolderPatch = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
         public static string RootFolder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
         public static string CentralFolderPath = RootFolder + @"\PasswordManager DataBase";
         public static string SearchFolderPath = RootFolder + @"\PasswordManager Search";
+        //public static string BackupFolderPath = RootFolder + @"\PasswordManager Search\Backup";
 
-        //public static string CentralFolderPatch = @"D:\PasswordManager";
 
         public static string AccNameName     = "AccName.txt";
         public static string EmailName       = "Email.txt";
@@ -28,12 +27,11 @@ namespace Password_Manager.AccountStuff
         public static string ExtraIn2Name    = "ExtraInfo2.txt";
         public static string ExtraIn3Name    = "ExtraInfo3.txt";
         public static string ExtraIn4Name    = "ExtraInfo4.txt";
-        public static string GroupName    = "Group.txt";
+        public static string GroupName       = "Group.txt";
 
 
         public static class AccountSaver
         {
-            //public static void SaveFiles(List<AccountStructure> accounts) { SaveFiles(accounts, CentralFolderPath); }
             public static void SaveFiles(List<AccountStructure> accounts, string directory) 
             {
                 if (directory != null)

@@ -115,6 +115,7 @@ namespace Password_Manager.ViewModel
 
         public MainViewModel() 
         {
+            LoadAccounts();
             AddAccountCommand = new Command(ShowAddAccountWindow);
             EditAccountCommand = new Command(ShowEditAccountWindow);
             DeleteAccountCommand = new Command(DeleteAccount);
@@ -141,42 +142,76 @@ namespace Password_Manager.ViewModel
             //создание файлов 
 
             NewAccountWindow.AddAccountCallback = this.AddAccount;
+            EditAccountWindow.SaveAccountCallback = this.SaveAccounts;
+            EditAccountWindow.LoadAccountCallback = this.LoadAccounts;
         }
 
 
+        private int isFilterOn = 0;
         private void FNoGroup()
         {
-            Accounts.Clear();
-            foreach (AccountStructure it in AccountDatabase.AccountLoadet.LoadFiles())
+            try
             {
-                AddAccount(it);
+                Accounts.Clear();
+                foreach (AccountStructure it in AccountDatabase.AccountLoadet.LoadFiles())
+                {
+                    AddAccount(it);
+                }
+                isFilterOn = 0;
+            }
+            catch
+            {
+                MainWindow.Warning();
             }
         }
         private void FFavorites()
         {
-            Accounts.Clear();
-            foreach (AccountStructure accStr in AccountDatabase.AccountLoadet.LoadFiles())
+            try
             {
-                if (accStr.Group.Contains("0")) { AddAccount(accStr); }
-
+                Accounts.Clear();
+                foreach (AccountStructure accStr in AccountDatabase.AccountLoadet.LoadFiles())
+                {
+                    if (accStr.Group.Contains("0")) { AddAccount(accStr); }
+                }
+                isFilterOn = 1;
+            }
+            catch
+            {
+                MainWindow.Warning();
             }
         }
         private void FImportant()
         {
-            Accounts.Clear();
-            foreach (AccountStructure accStr in AccountDatabase.AccountLoadet.LoadFiles())
+            
+            try
             {
-                if (accStr.Group.Contains("1")) { AddAccount(accStr); }
-
+                Accounts.Clear();
+                foreach (AccountStructure accStr in AccountDatabase.AccountLoadet.LoadFiles())
+                {
+                    if (accStr.Group.Contains("1")) { AddAccount(accStr); }
+                }
+                isFilterOn = 1;
+            }
+            catch
+            {
+                MainWindow.Warning();
             }
         }
         private void FNeedless()
         {
-            Accounts.Clear();
-            foreach (AccountStructure accStr in AccountDatabase.AccountLoadet.LoadFiles())
+            
+            try
             {
-                if (accStr.Group.Contains("2")) { AddAccount(accStr); }
-
+                Accounts.Clear();
+                foreach (AccountStructure accStr in AccountDatabase.AccountLoadet.LoadFiles())
+                {
+                    if (accStr.Group.Contains("2")) { AddAccount(accStr); }
+                }
+                isFilterOn = 1;
+            }
+            catch
+            {
+                MainWindow.Warning();
             }
         }
 
@@ -219,6 +254,7 @@ namespace Password_Manager.ViewModel
         {
             try
             {
+
                 Accounts.Clear();
                 foreach (AccountStructure it in AccountDatabase.AccountLoadet.LoadFiles())
                 {
@@ -234,22 +270,29 @@ namespace Password_Manager.ViewModel
 
         private void SearchForAccounts()
         {
-            Accounts.Clear();
-            if (SearchText != null)
+            try
             {
-                foreach (AccountStructure accStr in AccountDatabase.AccountLoadet.LoadFiles())
+                Accounts.Clear();
+                if (SearchText != null)
                 {
-                    if (accStr.AccountName.ToLower().Contains(SearchText)) { AddAccount(accStr); }
-                    else if (accStr.EmailAddress.ToLower().Contains(SearchText)) { AddAccount(accStr); }
-                    else if (accStr.Username.ToLower().Contains(SearchText)) { AddAccount(accStr); }
-                    else if (accStr.Password.ToLower().Contains(SearchText)) { AddAccount(accStr); }
-                    else if (accStr.DateOfBirth.ToLower().Contains(SearchText)) { AddAccount(accStr); }
-                    else if (accStr.SecurityInfo.ToLower().Contains(SearchText)) { AddAccount(accStr); }
-                    else if (accStr.ExtraInfo1.ToLower().Contains(SearchText)) { AddAccount(accStr); }
-                    else if (accStr.ExtraInfo2.ToLower().Contains(SearchText)) { AddAccount(accStr); }
-                    else if (accStr.ExtraInfo3.ToLower().Contains(SearchText)) { AddAccount(accStr); }
-                    else if (accStr.ExtraInfo4.ToLower().Contains(SearchText)) { AddAccount(accStr); }
+                    foreach (AccountStructure accStr in AccountDatabase.AccountLoadet.LoadFiles())
+                    {
+                        if (accStr.AccountName.ToLower().Contains(SearchText)) { AddAccount(accStr); }
+                        else if (accStr.EmailAddress.ToLower().Contains(SearchText)) { AddAccount(accStr); }
+                        else if (accStr.Username.ToLower().Contains(SearchText)) { AddAccount(accStr); }
+                        //else if (accStr.Password.ToLower().Contains(SearchText)) { AddAccount(accStr); }
+                        else if (accStr.DateOfBirth.ToLower().Contains(SearchText)) { AddAccount(accStr); }
+                        else if (accStr.SecurityInfo.ToLower().Contains(SearchText)) { AddAccount(accStr); }
+                        else if (accStr.ExtraInfo1.ToLower().Contains(SearchText)) { AddAccount(accStr); }
+                        else if (accStr.ExtraInfo2.ToLower().Contains(SearchText)) { AddAccount(accStr); }
+                        else if (accStr.ExtraInfo3.ToLower().Contains(SearchText)) { AddAccount(accStr); }
+                        else if (accStr.ExtraInfo4.ToLower().Contains(SearchText)) { AddAccount(accStr); }
+                    }
                 }
+            }
+            catch
+            {
+                MainWindow.Warning();
             }
         }
         //работа поиску
@@ -273,15 +316,19 @@ namespace Password_Manager.ViewModel
 
         private void AddAccount() 
         {
-            AddAccount(NewAccountWindow.AccountContext); 
+            LoadAccounts();
+            AddAccount(NewAccountWindow.AccountContext);
+            SaveAccounts();
         }
         private void AddAccount(AccountStructure acc) 
         {
+            
             AccountListItem all = new AccountListItem();
             all.DataContext = acc;
             all.ShowContentWindowCallback = ShowAccountContentWindow;
             
             Accounts.Add(all);
+            //SaveAccounts();
         }
         private void ShowAddAccountWindow() { NewAccountWindow.Show(); }
         //показ окна и последующее добавление аккаунта
@@ -293,12 +340,25 @@ namespace Password_Manager.ViewModel
 
         private void DeleteAccount() 
         {
-            if (SelectedIndex > -1) 
+            if ((SearchText == null || SearchText == "" ) && isFilterOn == 0)
             {
-                Accounts.RemoveAt(SelectedIndex); 
+                MainWindow.Warning_Delete();
+                if (MainWindow.SwitchDel == 1)
+                {
+                    if (SelectedIndex > -1)
+                    {
+                        Accounts.RemoveAt(SelectedIndex);
+                    }
+                    MainWindow.SwitchDel = 0;
+                    SaveAccounts();
+                }
+            }
+            else
+            {
+                MainWindow.WarningAllowDelete();
             }
         }
-        //удаление аккаунтов
+        //удаление аккаунтов с подтверждением от пользователя и сохранением в базу
 
         
     }
