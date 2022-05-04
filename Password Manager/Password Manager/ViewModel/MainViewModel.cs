@@ -334,7 +334,18 @@ namespace Password_Manager.ViewModel
         //показ окна и последующее добавление аккаунта
 
 
-        private void ShowEditAccountWindow() { SetEditWindowContext(); EditAccountWindow.Show(); }
+        private void ShowEditAccountWindow() 
+        {
+            if ((SearchText == null || SearchText == "") && isFilterOn == 0)
+            {
+                SetEditWindowContext();
+                EditAccountWindow.Show();
+            }
+            else
+            {
+                MainWindow.WarningAllowDelete();
+            }
+        }
         private void SetEditWindowContext() { EditAccountWindow.DataContext = SelectedAccountStructure; }
         //показ окна изменения. изменения происодят в реальном времени за счет динамической коллекции
 

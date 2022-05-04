@@ -47,7 +47,7 @@ namespace Password_Manager
         }
         public static void WarningAllowDelete()
         {
-            MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Please, reset search and filter to delete account.", "Error");
+            MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Please, reset search and filter to continue.", "Error");
         }
         public static int SwitchDel = 0;
 

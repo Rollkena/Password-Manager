@@ -51,7 +51,7 @@
                 <TextBox x:Name="PassBox" Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="30" Margin="10,121,0,0" VerticalAlignment="Top" Width="623" FontSize="16" Padding="3" FontFamily="Segoe MDL2 Assets"/>
                 <TextBox Text="{Binding DateOfBirth, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="30" Margin="10,159,0,0" VerticalAlignment="Top" Width="623" FontSize="16" Padding="3"/>
                 <TextBox Text="{Binding SecurityInfo, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="30" Margin="10,196,0,0" VerticalAlignment="Top" Width="623" FontSize="16" Padding="3"/>
-                <Separator HorizontalAlignment="Center"  Width="643" Margin="0,35,0.6,0.2"/>
+                <Separator HorizontalAlignment="Center"  Width="643" Margin="0,58,0.6,-7.8"/>
                 <TextBox Text="{Binding ExtraInfo1, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="30" Margin="10,260,0,0" VerticalAlignment="Top" Width="623" FontSize="16" Padding="3"/>
                 <TextBox Text="{Binding ExtraInfo2, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="30" Margin="10,297,0,0" VerticalAlignment="Top" Width="623" FontSize="16" Padding="3"/>
                 <TextBox Text="{Binding ExtraInfo3, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="30" Margin="10,334,0,0" VerticalAlignment="Top" Width="623" FontSize="16" Padding="3"/>
