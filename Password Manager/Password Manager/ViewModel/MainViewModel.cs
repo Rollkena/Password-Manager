@@ -317,33 +317,41 @@ namespace Password_Manager.ViewModel
         private void AddAccount() 
         {
             LoadAccounts();
+            //загрузка запесей из базы данных
             AddAccount(NewAccountWindow.AccountContext);
+            //Вызов функции сохранения аккаунта
             SaveAccounts();
+            //сохранение в базу данных
         }
         private void AddAccount(AccountStructure acc) 
         {
             
             AccountListItem all = new AccountListItem();
+            //создаем новую переменную - "запись"
             all.DataContext = acc;
-            all.ShowContentWindowCallback = ShowAccountContentWindow;
+            //присваиваем введеную пользователем информацию
             
             Accounts.Add(all);
-            //SaveAccounts();
         }
         private void ShowAddAccountWindow() { NewAccountWindow.Show(); }
         //показ окна и последующее добавление аккаунта
 
-
+        /// <summary>
+        /// //all.ShowContentWindowCallback = ShowAccountContentWindow; - был в Add Account
+        /// </summary>
         private void ShowEditAccountWindow() 
         {
-            if ((SearchText == null || SearchText == "") && isFilterOn == 0)
+            if ((SearchText == null || SearchText == "") && isFilterOn == 0) 
+            //проверка
             {
                 SetEditWindowContext();
                 EditAccountWindow.Show();
+                //вызываем окно
             }
             else
             {
                 MainWindow.WarningAllowDelete();
+                //запрет доступа
             }
         }
         private void SetEditWindowContext() { EditAccountWindow.DataContext = SelectedAccountStructure; }
@@ -352,16 +360,21 @@ namespace Password_Manager.ViewModel
         private void DeleteAccount() 
         {
             if ((SearchText == null || SearchText == "" ) && isFilterOn == 0)
+            //проверка
             {
                 MainWindow.Warning_Delete();
+                //вызов предупреждения в главной форме
                 if (MainWindow.SwitchDel == 1)
+                //положительный ответ пользователя
                 {
                     if (SelectedIndex > -1)
                     {
                         Accounts.RemoveAt(SelectedIndex);
                     }
                     MainWindow.SwitchDel = 0;
+                    //удаление
                     SaveAccounts();
+                    //сохранение
                 }
             }
             else

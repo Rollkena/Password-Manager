@@ -22,8 +22,11 @@ namespace Password_Manager.Views
     {
 
         public AccountStructure AccountContext { get => this.DataContext as AccountStructure; }
+        //реагируем на любое изменение в окне
         public Action SaveAccountCallback { get; set; }
+        //сохранение
         public Action LoadAccountCallback { get; set; }
+        //загрузка
         public EditAccountWindow()
         {
             InitializeComponent();
@@ -57,7 +60,6 @@ namespace Password_Manager.Views
             this.Hide();
         }
         private void Button_Click(object sender, RoutedEventArgs e)
-        
         {
             
             if (AccountContext.AccountName != null && AccountContext.AccountName.Replace(" ", "") != "")
@@ -65,6 +67,7 @@ namespace Password_Manager.Views
                 SaveAccountCallback?.Invoke();
                 this.DataContext = null;
                 this.Hide();
+                //сохраняем ввод и обнуляем поля
             }
             else
             {

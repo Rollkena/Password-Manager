@@ -42,6 +42,7 @@ namespace Password_Manager.Views
                 if (AccountContext.AccountName != null && AccountContext.AccountName.Replace(" ", "") != "")
                 {
                     AddAccountCallback?.Invoke();
+                    this.DataContext = null;
                     this.Close();
                 }
                 else
@@ -57,17 +58,6 @@ namespace Password_Manager.Views
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            //if (AccountContext.AccountName != null)
-            //{
-            //    e.Cancel = true;
-            //    this.DataContext = new AccountStructure();
-            //    this.Hide();
-            //}
-            //else
-            //{
-            //    e.Cancel = true;
-            //    MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Пожалуйста, заполните имя аккаунта", "Warning");
-            //}
             e.Cancel = true;
             this.Hide();
         }
@@ -93,6 +83,7 @@ namespace Password_Manager.Views
             if (AccountContext.AccountName != null && AccountContext.AccountName.Replace(" ", "") != "")
             {
                 AddAccountCallback?.Invoke();
+                this.DataContext = null;
                 this.Close();
             }
             else

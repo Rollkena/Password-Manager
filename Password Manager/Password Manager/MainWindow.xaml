@@ -12,21 +12,21 @@
     </Window.DataContext>
     <Grid>
         <Grid>
-            <Grid VerticalAlignment="Top" Height="75" Margin="200,0,0,0" Background="#FFF3F2E9">
+            <Grid VerticalAlignment="Top" Height="75" Margin="200,0,0,0" Background="#FFF2F2F2">
                 <Label Content="Accounts list:" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="24"/>
             </Grid>
 
-            <Grid HorizontalAlignment="Left" Width="200" Background="#FFF3F2E9" >
+            <Grid HorizontalAlignment="Left" Width="200" Background="#FFF2F2F2" >
                 <Label Content="Tools:" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,20,0,0" FontSize="24"/>
-                <Grid Margin="0,75,0,0" Background="#FFF3F2E9">
-                    <Button Command="{Binding AddAccountCommand}" Content="Add Account" VerticalAlignment="Top" Height="50" Margin="5,5,5,0" FontSize="16" Background="#FFF7E6E1"/>
-                    <Button Command="{Binding EditAccountCommand}" Content="Edit Account" VerticalAlignment="Top" Height="50" Margin="5,60,5,0" FontSize="16" Background="#FFF7E6E1"/>
-                    <Button Command="{Binding DeleteAccountCommand}" Content="Delete Account" VerticalAlignment="Top" Height="50" Margin="5,115,5,0" FontSize="16" Background="#FFF7E6E1"/>
-                    <Button Command="{Binding ShowAccountInfoCommand}" Content="Show Account Info" VerticalAlignment="Top" Height="50" Margin="5,170,5,0" FontSize="16" Background="#FFF7E6E1"/>
+                <Grid Margin="0,75,0,0" Background="#FFF2F2F2">
+                    <Button Command="{Binding AddAccountCommand}" Content="Add a New Account" VerticalAlignment="Top" Height="50" Margin="5,5,5,0" FontSize="16" Background="#FFEEE0E0"/>
+                    <Button Command="{Binding EditAccountCommand}" Content="Edit Account" VerticalAlignment="Top" Height="50" Margin="5,60,5,0" FontSize="16" Background="#FFEEE0E0"/>
+                    <Button Command="{Binding DeleteAccountCommand}" Content="Delete Account" VerticalAlignment="Top" Height="50" Margin="5,115,5,0" FontSize="16" Background="#FFEEE0E0"/>
+                    <Button Command="{Binding ShowAccountInfoCommand}" Content="Show Account Info" VerticalAlignment="Top" Height="50" Margin="5,170,5,0" FontSize="16" Background="#FFEEE0E0"/>
                     <TextBox HorizontalAlignment="Left" Height="30" Margin="5,307,0,0" TextWrapping="Wrap" Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="190" FontSize="16"/>
-                    <Button Command ="{Binding SearchForAccountsCommand}" Content="Go!" HorizontalAlignment="Left" Margin="5,342,0,0" VerticalAlignment="Top" Width="90" Height="30" FontSize="16" Background="#FFF7E6E1"/>
-                    <Button Command="{Binding LoadAccountsCommand}" Content="Reset" HorizontalAlignment="Left" Margin="105,342,0,0" VerticalAlignment="Top" Width="90" Height="30" FontSize="16" Background="#FFF7E6E1"/>
-                    <Button Command="{Binding SaveResultCommand}" Content="Save Result" HorizontalAlignment="Left" Margin="5,379,0,0" VerticalAlignment="Top" Width="190" Height="30" FontSize="16" Background="#FFF7E6E1" />
+                    <Button Command ="{Binding SearchForAccountsCommand}" Content="Go!" HorizontalAlignment="Left" Margin="5,342,0,0" VerticalAlignment="Top" Width="90" Height="30" FontSize="16" Background="#FFEEE0E0"/>
+                    <Button Command="{Binding LoadAccountsCommand}" Content="Reset" HorizontalAlignment="Left" Margin="105,342,0,0" VerticalAlignment="Top" Width="90" Height="30" FontSize="16" Background="#FFEEE0E0"/>
+                    <Button Command="{Binding SaveResultCommand}" Content="Save Result" HorizontalAlignment="Left" Margin="5,379,0,0" VerticalAlignment="Top" Width="190" Height="30" FontSize="16" Background="#FFEEE0E0" />
 
                     <Separator VerticalAlignment="Center" Margin="0,232,0,365" Height="28" RenderTransformOrigin="0.5,0.5"/>
                     <Label Content="Search:" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="55,253,60,0" FontSize="24" Width="85"/>

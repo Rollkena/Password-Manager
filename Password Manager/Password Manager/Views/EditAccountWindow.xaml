@@ -5,11 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Password_Manager.Views"
         mc:Ignorable="d"
-        Title="EditAccountWindow" Height="525" Width="800" KeyDown="Window_KeyDown" Closing ="Window_Closing" ResizeMode="NoResize">
+        Title="EditAccountWindow" Height="525" Width="800" KeyDown="Window_KeyDown" Closing ="Window_Closing" ResizeMode="NoResize" Background="#FFF2F2F2">
     <Grid>
         <Grid VerticalAlignment="Top" Height="80">
-            <Button  Content="Save Changes" HorizontalAlignment="Left" Margin="525,13,0,0" VerticalAlignment="Top" Width="125" Height="57" FontSize="16" Click="Button_Click"  />
-            <Button  Content="Go Back" HorizontalAlignment="Left" Margin="659,13,0,0" VerticalAlignment="Top" Width="125" Height="57" FontSize="16" Click="Button_Click_1"  />
+            <Button  Content="Save Changes" HorizontalAlignment="Left" Margin="525,13,0,0" VerticalAlignment="Top" Width="125" Height="57" FontSize="16" Click="Button_Click" Background="#FFEEE0E0"  />
+            <Button  Content="Go Back" HorizontalAlignment="Left" Margin="659,13,0,0" VerticalAlignment="Top" Width="125" Height="57" FontSize="16" Click="Button_Click_1" Background="#FFEEE0E0"  />
             <Label Content="Edit an Account" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="36" Margin="10,12,498.6,10" Width="285"/>
             <ComboBox x:Name="ComboBox" HorizontalAlignment="Left" Margin="395,42,0,0" VerticalAlignment="Top" Width="115" Height="28" FontSize="16" IsReadOnly="True"  SelectedIndex="{Binding Group, UpdateSourceTrigger=PropertyChanged}">
                 <TextBlock>Favorites</TextBlock>
